@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Makita</string>
+    <string name="input_user_email">Correo electrónico</string>
+    <string name="input_user_password">Contraseña</string>
+    <string name="button_login">Iniciar sesión</string>
+    <string name="textView_register">¿No tienes cuenta? Regístrate.</string>
+    <string name="textView_forgot_password">Olvidé mi contraseña.</string>
 </resources>
