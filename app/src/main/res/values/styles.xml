@@ -17,4 +17,13 @@
         <item name="android:textColor">@color/colorWhite</item>
 
     </style>
+
+    <style name="PrimaryFlatButton" parent="Theme.AppCompat.Light">
+        <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless.Colored</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:height">36dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
 </resources>

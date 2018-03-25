@@ -1,8 +1,9 @@
-package ni.com.fetesa.makitamovil
+package ni.com.fetesa.makitamovil.ui.activities
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import ni.com.fetesa.makitamovil.R
 
 class SplashActivity : AppCompatActivity() {
 
