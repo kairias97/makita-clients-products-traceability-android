@@ -16,6 +16,7 @@ class ForgotPasswordActivity : BaseActivity() {
 
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

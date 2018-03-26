@@ -7,4 +7,6 @@
     <string name="textView_forgot_password">Olvidé mi contraseña.</string>
     <string name="label_forgot_password">Por favor ingrese su correo electrónico para recuperar su contraseña:</string>
     <string name="button_verify_email">Verificar</string>
+    <string name="input_user_identification_card">Cédula de identidad</string>
+    <string name="label_register">Por favor, ingrese su cédula de identidad para verificar si ya es cliente Makita:</string>
 </resources>
