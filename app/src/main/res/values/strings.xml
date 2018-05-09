@@ -9,4 +9,11 @@
     <string name="button_verify_email">Verificar</string>
     <string name="input_user_identification_card">Cédula de identidad</string>
     <string name="label_register">Por favor, ingrese su cédula de identidad para verificar si ya es cliente Makita:</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

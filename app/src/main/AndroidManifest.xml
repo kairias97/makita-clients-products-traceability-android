@@ -14,6 +14,7 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="663de7737e30f5183dfda7c274c0893cf9063a44" />
+
         <activity android:name=".ui.activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,13 +24,16 @@
         </activity>
         <activity
             android:name=".ui.activities.LoginActivity"
-            android:launchMode="singleTop"/>
+            android:launchMode="singleTop" />
         <activity
             android:name=".ui.activities.RegisterActivity"
-            android:parentActivityName=".ui.activities.LoginActivity"/>
+            android:parentActivityName=".ui.activities.LoginActivity" />
         <activity
             android:name=".ui.activities.ForgotPasswordActivity"
-            android:parentActivityName=".ui.activities.LoginActivity"></activity>
+            android:parentActivityName=".ui.activities.LoginActivity" />
+        <activity
+            android:name=".ui.activities.MainActivity"
+            android:label="@string/title_activity_main"></activity>
     </application>
 
 </manifest>
