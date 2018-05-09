@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class MakitaAPI {
-    val service: IMakitaService?
+    public val service: IMakitaService?
 
     private constructor(){
         val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor()

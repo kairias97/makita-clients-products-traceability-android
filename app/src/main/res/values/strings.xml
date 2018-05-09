@@ -16,4 +16,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error_login_empty_fields">Debe llenar los campos</string>
+    <string name="progress_dialog_login_validating">Validando credenciales...</string>
+    <string name="generic_500_error">Ocurrió un error al procesar la solicitud</string>
 </resources>
