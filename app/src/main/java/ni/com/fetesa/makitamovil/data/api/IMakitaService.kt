@@ -15,4 +15,6 @@ interface IMakitaService {
     fun registerToMakita(@Body body: RegistrationsRequest): Call<RegistrationResponse>
     @POST(URL_REGISTRATION_VERIFICATION)
     fun verifyRegistration(@Body body: RegistrationVerificationRequest): Call<RegistrationVerificationResponse>
+    @POST(URL_REGISTRATION_COMPLETION)
+    fun completeRegistration(@Body body: RegistrationCompletionRequest): Call<RegistrationCompletionResponse>
 }

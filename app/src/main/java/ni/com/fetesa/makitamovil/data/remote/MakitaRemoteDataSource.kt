@@ -91,6 +91,30 @@ class MakitaRemoteDataSource {
         })
     }
 
+    fun completeRegistration(data: RegistrationCompletionRequest, callback: IMakitaRegistrationCompletionCallBack){
+        val authCall = MakitaAPI.instance.service!!.completeRegistration(data)
+        authCall.enqueue(object: Callback<RegistrationCompletionResponse>{
+            override fun onResponse(call: Call<RegistrationCompletionResponse>?, response: Response<RegistrationCompletionResponse>?) {
+                when(response!!.code()){
+                    200 -> callback.onSuccess(response.body()!!)
+                    else -> {
+                        if(BuildConfig.BUILD_TYPE == "debug") {
+                            Log.e("MakitaRegistrationCompletionError " + response.code().toString(), response.raw().body().toString())
+                        }
+                        callback.onFailure()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<RegistrationCompletionResponse>?, t: Throwable?) {
+                if(BuildConfig.BUILD_TYPE == "debug") {
+                    Log.e("MakitaRegistrationCompletionError ", t.toString())
+                }
+                callback.onFailure()
+            }
+        })
+    }
+
     companion object {
         val instance: MakitaRemoteDataSource by lazy { MakitaRemoteDataSource() }
     }
