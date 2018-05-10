@@ -33,9 +33,12 @@
             android:parentActivityName=".ui.activities.LoginActivity" />
         <activity
             android:name=".ui.activities.MainActivity"
-            android:label="@string/title_activity_main" />
-        <activity android:name=".ui.activities.ConfirmationRegisterActivity" />
-        <activity android:name=".ui.activities.CompletionRegisterActivity"></activity>
+            android:label="@string/title_activity_main"
+            android:launchMode="singleTop"/>
+        <activity android:name=".ui.activities.ConfirmationRegisterActivity"
+            android:parentActivityName=".ui.activities.RegisterActivity"/>
+        <activity android:name=".ui.activities.CompletionRegisterActivity"
+            android:parentActivityName=".ui.activities.RegisterActivity"></activity>
     </application>
 
 </manifest>
