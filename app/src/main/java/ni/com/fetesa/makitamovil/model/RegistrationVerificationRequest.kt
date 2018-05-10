@@ -7,4 +7,4 @@ import com.google.gson.annotations.SerializedName
  */
 data class RegistrationVerificationRequest(@SerializedName("documentTypeID") val documentTypeID: Int,
                                            @SerializedName("identificationNumber") val identificationNumber: String,
-                                           @SerializedName("confimationCode") val confirmationCode: String)
+                                           @SerializedName("confirmationCode") val confirmationCode: Int)

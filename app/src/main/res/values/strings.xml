@@ -7,7 +7,7 @@
     <string name="textView_forgot_password">Olvidé mi contraseña.</string>
     <string name="label_forgot_password">Por favor ingrese su correo electrónico para recuperar su contraseña:</string>
     <string name="button_verify_email">Verificar</string>
-    <string name="input_user_identification_card">Cédula de identidad</string>
+    <string name="input_user_identification_card">Identificación</string>
     <string name="label_register">Por favor, ingrese su cédula de identidad para verificar si ya es cliente Makita:</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
@@ -19,4 +19,21 @@
     <string name="error_login_empty_fields">Debe llenar los campos</string>
     <string name="progress_dialog_login_validating">Validando credenciales...</string>
     <string name="generic_500_error">Ocurrió un error al procesar la solicitud</string>
+    <string name="progress_dialog_register">Procesando registro...</string>
+    <string name="error_register_empty_field">Debe llenar el campo para proceder</string>
+    <string name="register_radio_btn_label_cedula">Cédula</string>
+    <string name="register_radio_btn_label_idCliente">Número de cliente Fetesa</string>
+    <string name="label_idType">Escoja la identificación con la que desea registrarse:</string>
+    <string name="label_verify_register">Ingrese el código que recibirá por correo electrónico para completar el registro.</string>
+    <string name="button_validate_register">Validar</string>
+    <string name="input_user_verification_code">Código de verificación</string>
+    <string name="progress_dialog_confirmationRegister">Confirmando código...</string>
+    <string name="label_complete_register">Complete su registro escogiendo su usuario y contraseña:</string>
+    <string name="input_username_complete_registration">Usuario</string>
+    <string name="input_password_complete_registration">Contraseña</string>
+    <string name="button_complete_register">Finalizar</string>
+    <string name="input_password_confirm_complete_registration">Confirmar contraseña</string>
+    <string name="progress_dialog_complete_register">Finalizando registro...</string>
+    <string name="error_endRegister_empty_field">Debe llenar los campos para finalizar el registro</string>
+    <string name="error_endRegister_passwords_dont_match">Las contraseñas ingresadas no coinciden</string>
 </resources>
