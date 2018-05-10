@@ -44,10 +44,10 @@ class RegisterActivity : BaseActivity(), IRegisterView {
         btnVerificar.setOnClickListener {
             val idCard = txtIdentification.text.toString()
             if(idCard != ""){
-                if(radioBtnCedula.isSelected){
+                if(radioBtnCedula.isChecked){
                     typeID = 2
                 }
-                else if(radioBtnNumeroCliente.isSelected){
+                else if(radioBtnNumeroCliente.isChecked){
                     typeID = 1
                 }
                 mRegisterPResenter.register(typeID, idCard)

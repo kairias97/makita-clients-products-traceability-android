@@ -28,4 +28,12 @@
     <string name="button_validate_register">Validar</string>
     <string name="input_user_verification_code">Código de verificación</string>
     <string name="progress_dialog_confirmationRegister">Confirmando código...</string>
+    <string name="label_complete_register">Complete su registro escogiendo su usuario y contraseña:</string>
+    <string name="input_username_complete_registration">Usuario</string>
+    <string name="input_password_complete_registration">Contraseña</string>
+    <string name="button_complete_register">Finalizar</string>
+    <string name="input_password_confirm_complete_registration">Confirmar contraseña</string>
+    <string name="progress_dialog_complete_register">Finalizando registro...</string>
+    <string name="error_endRegister_empty_field">Debe llenar los campos para finalizar el registro</string>
+    <string name="error_endRegister_passwords_dont_match">Las contraseñas ingresadas no coinciden</string>
 </resources>
