@@ -115,6 +115,55 @@ class MakitaRemoteDataSource {
         })
     }
 
+    fun getProfile(token: String, callback: IMakitaGetProfileCallBack){
+        val authCall = MakitaAPI.instance.service!!.getProfile(token)
+        authCall.enqueue(object: Callback<MakitaProfile>{
+            override fun onResponse(call: Call<MakitaProfile>?, response: Response<MakitaProfile>?) {
+                when(response!!.code()){
+                    200 -> callback.onSuccess(response.body()!!)
+                    401 -> callback.onUnauthorized(response.body()!!)
+                    else -> {
+                        if(BuildConfig.BUILD_TYPE == "debug") {
+                            Log.e("MakitaGetProfileError " + response.code().toString(), response.raw().body().toString())
+                        }
+                        callback.onFailure()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<MakitaProfile>?, t: Throwable?) {
+                if(BuildConfig.BUILD_TYPE == "debug") {
+                    Log.e("MakitaGetProfileError ", t.toString())
+                }
+                callback.onFailure()
+            }
+        })
+    }
+    fun updateProfile(token: String, data: MakitaProfile, callback: IMakitaUpdateProfileCallBack){
+        val authCall = MakitaAPI.instance.service!!.updateProfile(token, data)
+        authCall.enqueue(object: Callback<MakitaProfile>{
+            override fun onResponse(call: Call<MakitaProfile>?, response: Response<MakitaProfile>?) {
+                when(response!!.code()){
+                    200 -> callback.onSuccess(response.body()!!)
+                    401 -> callback.onUnauthorized(response.body()!!)
+                    else -> {
+                        if(BuildConfig.BUILD_TYPE == "debug") {
+                            Log.e("MakitaUpdateProfileError " + response.code().toString(), response.raw().body().toString())
+                        }
+                        callback.onFailure()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<MakitaProfile>?, t: Throwable?) {
+                if(BuildConfig.BUILD_TYPE == "debug") {
+                    Log.e("MakitaUpdateProfileError ", t.toString())
+                }
+                callback.onFailure()
+            }
+        })
+    }
+
     companion object {
         val instance: MakitaRemoteDataSource by lazy { MakitaRemoteDataSource() }
     }

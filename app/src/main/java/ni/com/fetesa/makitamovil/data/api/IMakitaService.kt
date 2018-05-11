@@ -17,4 +17,8 @@ interface IMakitaService {
     fun verifyRegistration(@Body body: RegistrationVerificationRequest): Call<RegistrationVerificationResponse>
     @POST(URL_REGISTRATION_COMPLETION)
     fun completeRegistration(@Body body: RegistrationCompletionRequest): Call<RegistrationCompletionResponse>
+    @GET(URL_PROFILE)
+    fun getProfile(@Header("Authorization") token: String): Call<MakitaProfile>
+    @PUT(URL_PROFILE)
+    fun updateProfile(@Header("Authorization") token: String, @Body body: MakitaProfile): Call<MakitaProfile>
 }

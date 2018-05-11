@@ -36,4 +36,19 @@
     <string name="progress_dialog_complete_register">Finalizando registro...</string>
     <string name="error_endRegister_empty_field">Debe llenar los campos para finalizar el registro</string>
     <string name="error_endRegister_passwords_dont_match">Las contraseñas ingresadas no coinciden</string>
+    <string name="title_profile">Perfil</string>
+    <string name="input_profile_username">Nombre de usuario</string>
+    <string name="input_profile_identificationNumber">Identificación</string>
+    <string name="input_profile_firstName">Primer nombre</string>
+    <string name="input_profile_secondName">Segundo Nombre</string>
+    <string name="input_profile_lastName">Primer apellido</string>
+    <string name="input_profile_secondLastName">Segundo apellido</string>
+    <string name="input_profile_birthDate">Fecha de nacimiento</string>
+    <string name="profile_radio_btn_male">Masculino</string>
+    <string name="profile_radio_btn_female">Femenino</string>
+    <string name="textView_profile_gender">Género:</string>
+    <string name="input_profile_firstEmail">E-mail primario</string>
+    <string name="input_profile_secondEmail">E-mail secundario</string>
+    <string name="input_profile_cellphone">Número de celular</string>
+    <string name="progress_dialog_profile_loading">Cargando perfil...</string>
 </resources>
