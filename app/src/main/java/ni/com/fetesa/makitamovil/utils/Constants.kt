@@ -10,6 +10,13 @@ const val URL_REGISTRATION = "registrations/"
 const val URL_REGISTRATION_VERIFICATION = "registrations/verification"
 const val URL_REGISTRATION_COMPLETION = "registrations/completion"
 const val URL_PROFILE = "clients/profile"
+const val URL_POINTS = "clients/points"
+const val URL_PRODUCTS = "clients/products"
+const val URL_INVOICES = "clients/invoices"
+const val URL_INVOICES_PRODUCTS = "clients/invoices/{invoiceID}/products"
+const val URL_INVOICES_BINDING = "clients/invoices/binding"
+const val URL_PRODUCTS_Warranty = "clients/products/{productID}/warranty"
+
 
 const val TYPE_ID_NUMERO_CLIENTE = 1
 const val TYPE_ID_CEDULA = 2

@@ -2,9 +2,11 @@ package ni.com.fetesa.makitamovil.data.remote
 
 import android.support.compat.BuildConfig
 import android.util.Log
+import com.google.gson.JsonParser
 import ni.com.fetesa.makitamovil.data.api.MakitaAPI
 import ni.com.fetesa.makitamovil.model.*
 import ni.com.fetesa.makitamovil.data.remote.Callbacks.*
+import ni.com.fetesa.makitamovil.utils.GsonParser
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -163,6 +165,200 @@ class MakitaRemoteDataSource {
             }
         })
     }
+
+    fun getFidelizationPoints(token: String, callback: IMakitaResponseCallback<UserFidelizationPoints>){
+        val authCall = MakitaAPI.instance.service!!.getFidelizationPoints(token)
+        authCall.enqueue(object:Callback<UserFidelizationPoints> {
+            override fun onFailure(call: Call<UserFidelizationPoints>?, t: Throwable?) {
+                callback.onNetworkFailure()
+            }
+
+            override fun onResponse(call: Call<UserFidelizationPoints>?, response: Response<UserFidelizationPoints>?) {
+                when(response!!.code()) {
+                    200 -> {
+                        callback.onSuccess(response!!.body()!!)
+                    }
+                    401 -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onSessionExpired(customMessage.message)
+                    }
+                    else -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onCustomMessage(customMessage.message)
+                    }
+                }
+            }
+
+        })
+    }
+
+    fun getProductsByUser(token: String, callback: IMakitaResponseCallback<List<Product>>) {
+        val authCall = MakitaAPI.instance.service!!.getUserProducts(token)
+        authCall.enqueue(object:Callback<List<Product>> {
+            override fun onFailure(call: Call<List<Product>>?, t: Throwable?) {
+                callback.onNetworkFailure()
+            }
+
+            override fun onResponse(call: Call<List<Product>>?, response: Response<List<Product>>?) {
+                when(response!!.code()) {
+                    200 -> {
+                        callback.onSuccess(response!!.body()!!)
+                    }
+                    401 -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onSessionExpired(customMessage.message)
+                    }
+                    else -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onCustomMessage(customMessage.message)
+                    }
+                }
+            }
+
+        })
+    }
+
+    fun getProductsByInvoice(token: String, invoiceID: Long, callback: IMakitaResponseCallback<List<Product>>) {
+        val authCall = MakitaAPI.instance.service!!.getInvoiceProducts(token, invoiceID)
+        authCall.enqueue(object:Callback<List<Product>> {
+            override fun onFailure(call: Call<List<Product>>?, t: Throwable?) {
+                callback.onNetworkFailure()
+            }
+
+            override fun onResponse(call: Call<List<Product>>?, response: Response<List<Product>>?) {
+                when(response!!.code()) {
+                    200 -> {
+                        callback.onSuccess(response!!.body()!!)
+                    }
+                    401 -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onSessionExpired(customMessage.message)
+                    }
+                    else -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onCustomMessage(customMessage.message)
+                    }
+                }
+            }
+
+        })
+    }
+    fun getInvoicesByUser(token: String, callback: IMakitaResponseCallback<List<Invoice>>){
+        val authCall = MakitaAPI.instance.service!!.getUserInvoices(token)
+        authCall.enqueue(object:Callback<List<Invoice>> {
+            override fun onFailure(call: Call<List<Invoice>>?, t: Throwable?) {
+                callback.onNetworkFailure()
+            }
+
+            override fun onResponse(call: Call<List<Invoice>>?, response: Response<List<Invoice>>?) {
+                when(response!!.code()) {
+                    200 -> {
+                        callback.onSuccess(response!!.body()!!)
+                    }
+                    401 -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onSessionExpired(customMessage.message)
+                    }
+                    else -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onCustomMessage(customMessage.message)
+                    }
+                }
+            }
+
+        })
+    }
+    fun getProductWarranty(token: String, productID: Long, callback: IMakitaResponseCallback<Warranty>) {
+        val authCall = MakitaAPI.instance.service!!.getProductWarranty(token, productID)
+        authCall.enqueue(object:Callback<Warranty> {
+            override fun onFailure(call: Call<Warranty>?, t: Throwable?) {
+                callback.onNetworkFailure()
+            }
+
+            override fun onResponse(call: Call<Warranty>?, response: Response<Warranty>?) {
+                when(response!!.code()) {
+                    200 -> {
+                        callback.onSuccess(response!!.body()!!)
+                    }
+                    401 -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onSessionExpired(customMessage.message)
+                    }
+                    else -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onCustomMessage(customMessage.message)
+                    }
+                }
+            }
+
+        })
+    }
+
+    fun saveProductWarranty(token: String, productID: Long, body: WarrantyBindingRequest, callback: IMakitaResponseCallback<Warranty>) {
+        val authCall = MakitaAPI.instance.service!!.saveWarranty(token, productID, body)
+        authCall.enqueue(object:Callback<Warranty> {
+            override fun onFailure(call: Call<Warranty>?, t: Throwable?) {
+                callback.onNetworkFailure()
+            }
+
+            override fun onResponse(call: Call<Warranty>?, response: Response<Warranty>?) {
+                when(response!!.code()) {
+                    200 -> {
+                        callback.onSuccess(response!!.body()!!)
+                    }
+                    401 -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onSessionExpired(customMessage.message)
+                    }
+                    else -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onCustomMessage(customMessage.message)
+                    }
+                }
+            }
+
+        })
+    }
+    fun bindUserInvoice(token: String, body: InvoiceBindingRequest, callback: IMakitaResponseCallback<InvoiceBinding>) {
+        val authCall = MakitaAPI.instance.service!!.bindInvoice(token, body)
+        authCall.enqueue(object:Callback<InvoiceBinding> {
+            override fun onFailure(call: Call<InvoiceBinding>?, t: Throwable?) {
+                callback.onNetworkFailure()
+            }
+
+            override fun onResponse(call: Call<InvoiceBinding>?, response: Response<InvoiceBinding>?) {
+                when(response!!.code()) {
+                    200 -> {
+                        callback.onSuccess(response!!.body()!!)
+                    }
+                    401 -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onSessionExpired(customMessage.message)
+                    }
+                    else -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onCustomMessage(customMessage.message)
+                    }
+                }
+            }
+
+        })
+    }
+
 
     companion object {
         val instance: MakitaRemoteDataSource by lazy { MakitaRemoteDataSource() }
