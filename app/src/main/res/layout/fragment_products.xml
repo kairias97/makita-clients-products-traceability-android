@@ -5,6 +5,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="ni.com.fetesa.makitamovil.ui.fragments.ProductsFragment">
 
+    <TextView
+        android:id="@+id/textView_label_no_products"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/label_no_products"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_products"
         android:layout_width="match_parent"

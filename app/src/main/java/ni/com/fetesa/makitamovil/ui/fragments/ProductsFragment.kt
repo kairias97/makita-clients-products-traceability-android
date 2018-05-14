@@ -5,11 +5,21 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 
 import ni.com.fetesa.makitamovil.R
+import ni.com.fetesa.makitamovil.data.local.SharedPrefManager
+import ni.com.fetesa.makitamovil.data.remote.MakitaRemoteDataSource
+import ni.com.fetesa.makitamovil.model.Product
+import ni.com.fetesa.makitamovil.presenter.IProductsFragmentPresenter
+import ni.com.fetesa.makitamovil.presenter.implementations.ProductsFragmentPresenterImpl
+import ni.com.fetesa.makitamovil.ui.adapters.ProductAdapter
+import ni.com.fetesa.makitamovil.ui.fragmentViews.IProductsFragmentView
 
 /**
  * A simple [Fragment] subclass.
@@ -19,12 +29,18 @@ import ni.com.fetesa.makitamovil.R
  * Use the [ProductsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ProductsFragment : Fragment() {
+class ProductsFragment : Fragment(), IProductsFragmentView, ProductAdapter.OnProductSelecteListener {
 
     // TODO: Rename and change types of parameters
 
     private var mListener: OnFragmentInteractionListener? = null
     private lateinit var mAddButton: FloatingActionButton
+    private lateinit var mTextView: TextView
+    private lateinit var mRecyclerView: RecyclerView
+
+    private lateinit var mProductAdapter: ProductAdapter
+    private lateinit var mProductPresenter: IProductsFragmentPresenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -34,9 +50,28 @@ class ProductsFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater!!.inflate(R.layout.fragment_products, container, false)
         mAddButton = view.findViewById(R.id.fab_add_products)
+        mTextView = view.findViewById(R.id.textView_label_no_products)
+
+        mRecyclerView = view.findViewById(R.id.recycler_products)
+        mProductAdapter = ProductAdapter(ArrayList<Product>(),this)
+        mRecyclerView.adapter = mProductAdapter
+        mRecyclerView.layoutManager = LinearLayoutManager(activity)
+        mRecyclerView.setHasFixedSize(true)
+
         mAddButton.setOnClickListener {
             mListener?.onAddProductsSelected()
         }
+
+        mProductPresenter = ProductsFragmentPresenterImpl(this, MakitaRemoteDataSource.instance, SharedPrefManager(
+                activity.getSharedPreferences(SharedPrefManager.PreferenceFiles.UserSharedPref.toString(),
+                        Context.MODE_PRIVATE)
+        ))
+
+        activity.title = "Productos"
+
+        mTextView.visibility = View.GONE
+
+        mProductPresenter.getProducts()
         return view
 
     }
@@ -50,6 +85,40 @@ class ProductsFragment : Fragment() {
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         fun onAddProductsSelected()
+        fun onLoadingProducts()
+        fun onLoadingProductsFinished()
+        fun onError()
+        fun onCustomMessage(msg: String)
+    }
+
+    override fun showLoadingProducts() {
+        mListener?.onLoadingProducts()
+    }
+
+    override fun hideLoadingProducts() {
+        mListener?.onLoadingProductsFinished()
+    }
+
+    override fun showCustomMessage(msg: String) {
+        mListener?.onCustomMessage(msg)
+    }
+
+    override fun showError() {
+        mListener?.onError()
+    }
+    override fun onProductSelected(product: Product) {
+        mListener?.onCustomMessage("Se selecciono un producto")
+    }
+
+    override fun setProductList(data: MutableList<Product>) {
+        if(data.count()>0){
+            (mRecyclerView.adapter as? ProductAdapter)!!.setProductsList(data)
+            (mRecyclerView.adapter as? ProductAdapter)!!.notifyDataSetChanged()
+            mTextView.visibility = View.GONE
+        }
+        else{
+            mTextView.visibility = View.VISIBLE
+        }
     }
 
     companion object {

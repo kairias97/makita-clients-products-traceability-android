@@ -30,6 +30,21 @@ class MainActivity : BaseActivity() {
             override fun onAddProductsSelected() {
                 navigateToBindInvoice()
             }
+            override fun onLoadingProducts() {
+                showProgressDialog(getString(R.string.progress_dialog_products_loading))
+            }
+
+            override fun onLoadingProductsFinished() {
+                hideProgressDialog()
+            }
+
+            override fun onCustomMessage(msg: String) {
+                toast(msg)
+            }
+
+            override fun onError() {
+                toast(R.string.generic_500_error)
+            }
 
         }))
 
@@ -44,6 +59,22 @@ class MainActivity : BaseActivity() {
                 fragment = ProductsFragment.newInstance(object: ProductsFragment.OnFragmentInteractionListener {
                     override fun onAddProductsSelected() {
                         navigateToBindInvoice()
+                    }
+
+                    override fun onLoadingProducts() {
+                        activity.showProgressDialog(getString(R.string.progress_dialog_products_loading))
+                    }
+
+                    override fun onLoadingProductsFinished() {
+                        activity.hideProgressDialog()
+                    }
+
+                    override fun onCustomMessage(msg: String) {
+                        activity.toast(msg)
+                    }
+
+                    override fun onError() {
+                        activity.toast(R.string.generic_500_error)
                     }
 
                 })
