@@ -58,4 +58,6 @@
     <string name="input_invoice_number">Número de Factura</string>
     <string name="button_bind_invoice">Registrar factura</string>
     <string name="title_binded_products">Productos registrados</string>
+    <string name="progress_dialog_profile_saving">Guardando cambios en el perfil...</string>
+    <string name="message_profile_updated">El perfil se ha actualizado exitosamente.</string>
 </resources>

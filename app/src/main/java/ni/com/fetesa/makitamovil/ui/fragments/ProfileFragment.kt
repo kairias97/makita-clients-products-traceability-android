@@ -1,21 +1,20 @@
 package ni.com.fetesa.makitamovil.ui.fragments
 
 import android.content.Context
+import android.opengl.Visibility
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.RadioButton
-import android.widget.RadioGroup
+import android.widget.*
 
 import ni.com.fetesa.makitamovil.R
 import ni.com.fetesa.makitamovil.data.local.SharedPrefManager
 import ni.com.fetesa.makitamovil.data.remote.MakitaRemoteDataSource
 import ni.com.fetesa.makitamovil.model.MakitaProfile
+import ni.com.fetesa.makitamovil.model.MakitaUserSession
 import ni.com.fetesa.makitamovil.model.UserFidelizationPoints
 import ni.com.fetesa.makitamovil.presenter.IProfileFragmentPresenter
 import ni.com.fetesa.makitamovil.presenter.implementations.ProfileFragmentPresenterImpl
@@ -31,9 +30,7 @@ import ni.com.fetesa.makitamovil.utils.toast
  * Use the [ProfileFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ProfileFragment : Fragment(), IProfileFragmentView {
-
-
+class ProfileFragment : Fragment(), IProfileFragmentView, DatePickerFragment.DatePickerListener {
 
     private lateinit var mListener: ProfileFragmentListener
 
@@ -52,6 +49,7 @@ class ProfileFragment : Fragment(), IProfileFragmentView {
     private lateinit var mTxtCellphone: EditText
     private lateinit var mCheckPointsButton: Button
     private lateinit var mEditFab: FloatingActionButton
+    private lateinit var mSaveFab: FloatingActionButton
 
     private lateinit var mProfileFragmentPresenter: IProfileFragmentPresenter
 
@@ -78,11 +76,41 @@ class ProfileFragment : Fragment(), IProfileFragmentView {
         mTxtCellphone = view.findViewById(R.id.edit_text_profile_cellphone)
         mCheckPointsButton = view.findViewById(R.id.btn_check_points)
         mEditFab = view.findViewById(R.id.fab_edit_profile)
+        mSaveFab = view.findViewById(R.id.fab_save_profile)
         mCheckPointsButton.setOnClickListener {
             mProfileFragmentPresenter.getMakitaPoints()
         }
         mEditFab.setOnClickListener {
-            activity.toast("Esta es una prueba del fab")
+            //activity.toast("Esta es una prueba del fab")
+            mEditFab.visibility = View.GONE
+            mSaveFab.visibility = View.VISIBLE
+            lockUnlockInputs(true)
+        }
+        mSaveFab.setOnClickListener {
+            val username = mTxtUsername.text.toString()
+            val identificationNumber = mTxtIdentificationNumber.text.toString()
+            val firstName = mTxtFirstName.text.toString()
+            val middleName = mTxtMiddleName.text.toString()
+            val lastName = mTxtLastName.text.toString()
+            val secondLastName = mTxtSecondLastName.text.toString()
+            val birthDate = DateUtil.parseDateStringToFormat(mTxtBirthDate.text.toString(),"dd/mm/yy","yyyy-mm-dd")
+            val isMale = mRadioBtnMale.isChecked
+            val firstEmail = mTxtFirstEmail.text.toString()
+            val secondEmail = mTxtSecondEmail.text.toString()
+            val cellPhone = mTxtCellphone.text.toString()
+            val profile = MakitaProfile(username, MakitaUserSession.instance.makitaProfile.fetesaAlias, MakitaUserSession.instance.makitaProfile.clientFetesaCode,
+                    MakitaUserSession.instance.makitaProfile.documentTypeID, identificationNumber, firstName, middleName, lastName, secondLastName, birthDate, isMale,
+                    firstEmail, secondEmail, cellPhone,"")
+            if(profile != MakitaUserSession.instance.makitaProfile){
+                mProfileFragmentPresenter.updateProfile(profile)
+            }
+            else{
+                savedProfileSuccessful()
+            }
+        }
+        mTxtBirthDate.setOnClickListener {
+            val datePickerFragment = DatePickerFragment.newInstance(this)
+            datePickerFragment.show(fragmentManager.beginTransaction(), "datePicker")
         }
 
 
@@ -94,6 +122,7 @@ class ProfileFragment : Fragment(), IProfileFragmentView {
         activity.title = getString(R.string.title_fragment_profile)
 
         mProfileFragmentPresenter.getProfile()
+        lockUnlockInputs(false)
         return view
     }
 
@@ -105,7 +134,7 @@ class ProfileFragment : Fragment(), IProfileFragmentView {
         fun onProfileLoadingError()
         fun onCustomMessage(message: String)
         fun onMakitaPointsChecked(points: UserFidelizationPoints)
-
+        fun onSavingProfileLoading()
     }
 
 
@@ -139,6 +168,26 @@ class ProfileFragment : Fragment(), IProfileFragmentView {
         loadData(data)
     }
 
+    override fun savedProfileSuccessful() {
+        mSaveFab.visibility = View.GONE
+        mEditFab.visibility = View.VISIBLE
+        lockUnlockInputs(false)
+        mListener.onCustomMessage(getString(R.string.message_profile_updated))
+    }
+
+    override fun showSavingProfileProgress() {
+        mListener.onSavingProfileLoading()
+    }
+
+    override fun hideSavingProfileProgress() {
+        mListener.onProfileLoadingFinished()
+    }
+
+    override fun OnDateSelected(year: Int, month: Int, day: Int) {
+        var birthDate = DateUtil.parseDateToFormat(year, month, day, "dd/MM/yyyy")
+        mTxtBirthDate.setText(birthDate)
+    }
+
     private fun loadData(data: MakitaProfile){
         mTxtUsername.setText(data.username)
         mTxtIdentificationNumber.setText(data.identificationNumber)
@@ -147,7 +196,7 @@ class ProfileFragment : Fragment(), IProfileFragmentView {
         mTxtLastName.setText(data.lastName)
         mTxtSecondLastName.setText(data.secondLastName)
         if(data.birthDate != null){
-            DateUtil.parseDateStringToFormat(data.birthDate,"yyyy-mm-dd","dd-mm-yy")
+            mTxtBirthDate.setText(DateUtil.parseDateStringToFormat(data.birthDate,"yyyy-mm-dd","dd/mm/yy"))
         }
         if(data.isMale != null){
             if(data.isMale){
@@ -162,6 +211,20 @@ class ProfileFragment : Fragment(), IProfileFragmentView {
         mTxtCellphone.setText(data.cellPhone)
     }
 
+    private fun lockUnlockInputs(value: Boolean){
+        mTxtUsername.isEnabled = false
+        mTxtIdentificationNumber.isEnabled = false
+        mTxtFirstName.isEnabled = value
+        mTxtMiddleName.isEnabled = value
+        mTxtLastName.isEnabled = value
+        mTxtSecondLastName.isEnabled = value
+        mTxtBirthDate.isEnabled = value
+        mRadioBtnMale.isEnabled = value
+        mRadioBtnFemale.isEnabled = value
+        mTxtFirstEmail.isEnabled = value
+        mTxtSecondEmail.isEnabled = value
+        mTxtCellphone.isEnabled = value
+    }
 
     companion object {
         fun newInstance(listener: ProfileFragmentListener): ProfileFragment {

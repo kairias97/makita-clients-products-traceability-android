@@ -3,6 +3,7 @@ package ni.com.fetesa.makitamovil.presenter.implementations
 import ni.com.fetesa.makitamovil.data.local.SharedPrefManager
 import ni.com.fetesa.makitamovil.data.remote.Callbacks.IMakitaGetProfileCallBack
 import ni.com.fetesa.makitamovil.data.remote.Callbacks.IMakitaResponseCallback
+import ni.com.fetesa.makitamovil.data.remote.Callbacks.IMakitaUpdateProfileCallBack
 import ni.com.fetesa.makitamovil.data.remote.MakitaRemoteDataSource
 import ni.com.fetesa.makitamovil.model.MakitaProfile
 import ni.com.fetesa.makitamovil.model.MakitaUserSession
@@ -44,7 +45,7 @@ class ProfileFragmentPresenterImpl:IProfileFragmentPresenter {
             override fun onUnauthorized(response: MakitaProfile) {
                 mProfileFragmentView.hideLoadingProfile()
                 mSharedPrefManager.clearPreferences()
-                mProfileFragmentView.showCustomMessage(response.message)
+                mProfileFragmentView.showCustomMessage(response.message!!)
             }
         })
     }
@@ -72,6 +73,29 @@ class ProfileFragmentPresenterImpl:IProfileFragmentPresenter {
                 mProfileFragmentView.hideLoadingMakitaPoints()
             }
 
+        })
+    }
+
+    override fun updateProfile(data: MakitaProfile) {
+        mProfileFragmentView.showSavingProfileProgress()
+        val token = "Token ${MakitaUserSession.instance.authToken}"
+        mMakitaRemoteDataSource.updateProfile(token, data, object: IMakitaUpdateProfileCallBack{
+            override fun onSuccess(response: MakitaProfile) {
+                MakitaUserSession.instance.makitaProfile = response
+                mProfileFragmentView.hideSavingProfileProgress()
+                mProfileFragmentView.savedProfileSuccessful()
+            }
+
+            override fun onUnauthorized(response: MakitaProfile) {
+                mProfileFragmentView.hideSavingProfileProgress()
+                mSharedPrefManager.clearPreferences()
+                mProfileFragmentView.showCustomMessage(response.message!!)
+            }
+
+            override fun onFailure() {
+                mProfileFragmentView.hideSavingProfileProgress()
+                mProfileFragmentView.showError()
+            }
         })
     }
 

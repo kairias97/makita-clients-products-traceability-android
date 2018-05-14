@@ -15,4 +15,7 @@ interface IProfileFragmentView {
     fun showCustomMessage(message: String)
     fun loadProfile(data: MakitaProfile)
     fun showMakitaPoints(points: UserFidelizationPoints)
+    fun showSavingProfileProgress()
+    fun hideSavingProfileProgress()
+    fun savedProfileSuccessful()
 }

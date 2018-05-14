@@ -12,4 +12,4 @@ data class MakitaProfile(@SerializedName("username") val username: String, @Seri
                          @SerializedName("secondLastName") val secondLastName: String, @SerializedName("birthDate") val birthDate: String?,
                          @SerializedName("isMale") val isMale: Boolean?, @SerializedName("primaryEmail") val primaryEmail: String,
                          @SerializedName("secondaryEmail") val secondaryEmail: String, @SerializedName("cellPhone") val cellPhone: String,
-                         @SerializedName("message") val message: String)
+                         @SerializedName("message") val message: String?)

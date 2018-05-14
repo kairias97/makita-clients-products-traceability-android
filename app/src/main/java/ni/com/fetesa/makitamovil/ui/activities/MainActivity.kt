@@ -92,6 +92,10 @@ class MainActivity : BaseActivity() {
                     override fun onCustomMessage(error: String) {
                         activity.toast(error)
                     }
+
+                    override fun onSavingProfileLoading() {
+                        activity.showProgressDialog(getString(R.string.progress_dialog_profile_saving))
+                    }
                 })
             }
         }
