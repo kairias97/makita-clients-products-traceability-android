@@ -2,9 +2,11 @@ package ni.com.fetesa.makitamovil.presenter.implementations
 
 import ni.com.fetesa.makitamovil.data.local.SharedPrefManager
 import ni.com.fetesa.makitamovil.data.remote.Callbacks.IMakitaGetProfileCallBack
+import ni.com.fetesa.makitamovil.data.remote.Callbacks.IMakitaResponseCallback
 import ni.com.fetesa.makitamovil.data.remote.MakitaRemoteDataSource
 import ni.com.fetesa.makitamovil.model.MakitaProfile
 import ni.com.fetesa.makitamovil.model.MakitaUserSession
+import ni.com.fetesa.makitamovil.model.UserFidelizationPoints
 import ni.com.fetesa.makitamovil.presenter.IProfileFragmentPresenter
 import ni.com.fetesa.makitamovil.ui.fragmentViews.IProfileFragmentView
 
@@ -12,6 +14,7 @@ import ni.com.fetesa.makitamovil.ui.fragmentViews.IProfileFragmentView
  * Created by dusti on 11/05/2018.
  */
 class ProfileFragmentPresenterImpl:IProfileFragmentPresenter {
+
 
     private val mProfileFragmentView: IProfileFragmentView
     private val mMakitaRemoteDataSource: MakitaRemoteDataSource
@@ -41,8 +44,34 @@ class ProfileFragmentPresenterImpl:IProfileFragmentPresenter {
             override fun onUnauthorized(response: MakitaProfile) {
                 mProfileFragmentView.hideLoadingProfile()
                 mSharedPrefManager.clearPreferences()
-                mProfileFragmentView.showCustomError(response.message)
+                mProfileFragmentView.showCustomMessage(response.message)
             }
+        })
+    }
+    override fun getMakitaPoints() {
+        mProfileFragmentView.showLoadingMakitaPoints()
+        val token = "Token ${MakitaUserSession.instance.authToken}"
+        mMakitaRemoteDataSource.getFidelizationPoints(token, object:IMakitaResponseCallback<UserFidelizationPoints>{
+            override fun onSuccess(response: UserFidelizationPoints) {
+                mProfileFragmentView.hideLoadingMakitaPoints()
+                mProfileFragmentView.showMakitaPoints(response)
+            }
+
+            override fun onCustomMessage(message: String) {
+                mProfileFragmentView.hideLoadingMakitaPoints()
+                mProfileFragmentView.showCustomMessage(message)
+            }
+
+            override fun onSessionExpired(message: String) {
+                mProfileFragmentView.hideLoadingMakitaPoints()
+                mSharedPrefManager.clearPreferences()
+                mProfileFragmentView.showCustomMessage(message)
+            }
+
+            override fun onNetworkFailure() {
+                mProfileFragmentView.hideLoadingMakitaPoints()
+            }
+
         })
     }
 

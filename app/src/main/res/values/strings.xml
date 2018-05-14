@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Makita</string>
-    <string name="input_user_email">Correo electrónico</string>
+    <string name="input_user_email">Usuario</string>
     <string name="input_user_password">Contraseña</string>
     <string name="button_login">Iniciar sesión</string>
     <string name="textView_register">¿No tienes cuenta? Regístrate.</string>
@@ -10,9 +10,9 @@
     <string name="input_user_identification_card">Identificación</string>
     <string name="label_register">Por favor, ingrese su cédula de identidad para verificar si ya es cliente Makita:</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_products">Productos</string>
+    <string name="title_invoices">Facturas</string>
+    <string name="title_workshop_orders">Taller</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -37,7 +37,7 @@
     <string name="error_endRegister_empty_field">Debe llenar los campos para finalizar el registro</string>
     <string name="error_endRegister_passwords_dont_match">Las contraseñas ingresadas no coinciden</string>
     <string name="title_profile">Perfil</string>
-    <string name="input_profile_username">Nombre de usuario</string>
+    <string name="input_profile_username">Usuario</string>
     <string name="input_profile_identificationNumber">Identificación</string>
     <string name="input_profile_firstName">Primer nombre</string>
     <string name="input_profile_secondName">Segundo Nombre</string>
@@ -51,4 +51,11 @@
     <string name="input_profile_secondEmail">E-mail secundario</string>
     <string name="input_profile_cellphone">Número de celular</string>
     <string name="progress_dialog_profile_loading">Cargando perfil...</string>
+    <string name="check_points_btn">Consultar puntos Makita</string>
+    <string name="title_fragment_profile">Perfil</string>
+    <string name="makita_points_message">Usted tiene %.2f puntos Makitas válidos hasta el %s</string>
+    <string name="progress_dialog_fetching_points">Consultando puntos Makita...</string>
+    <string name="input_invoice_number">Número de Factura</string>
+    <string name="button_bind_invoice">Registrar factura</string>
+    <string name="title_binded_products">Productos registrados</string>
 </resources>

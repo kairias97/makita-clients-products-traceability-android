@@ -5,4 +5,5 @@ package ni.com.fetesa.makitamovil.presenter
  */
 interface IProfileFragmentPresenter {
     fun getProfile()
+    fun getMakitaPoints()
 }
