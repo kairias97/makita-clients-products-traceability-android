@@ -7,6 +7,8 @@ class MakitaUserSession {
     var email = ""
     var authToken = ""
 
+    lateinit var makitaProfile: MakitaProfile
+
     private constructor()
 
     companion object {

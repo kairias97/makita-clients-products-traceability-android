@@ -34,11 +34,14 @@
         <activity
             android:name=".ui.activities.MainActivity"
             android:label="@string/title_activity_main"
-            android:launchMode="singleTop"/>
-        <activity android:name=".ui.activities.ConfirmationRegisterActivity"
-            android:parentActivityName=".ui.activities.RegisterActivity"/>
-        <activity android:name=".ui.activities.CompletionRegisterActivity"
-            android:parentActivityName=".ui.activities.RegisterActivity"></activity>
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".ui.activities.ConfirmationRegisterActivity"
+            android:parentActivityName=".ui.activities.RegisterActivity" />
+        <activity
+            android:name=".ui.activities.CompletionRegisterActivity"
+            android:parentActivityName=".ui.activities.RegisterActivity" />
+        <activity android:name=".ui.activities.InvoiceBindingActivity"></activity>
     </application>
 
 </manifest>
