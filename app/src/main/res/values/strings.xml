@@ -63,4 +63,7 @@
     <string name="label_no_products">Aún no hay productos registrados</string>
     <string name="progress_dialog_products_loading">Cargando productos registrados...</string>
     <string name="message_no_serial">Se requiere ingresar serial</string>
+    <string name="progress_dialog_invoice_binding">Vinculando la factura...</string>
+    <string name="label_no_invoices">Aún no hay facturas registradas</string>
+    <string name="progress_dialog_invoice_loading">Cargando facturas...</string>
 </resources>

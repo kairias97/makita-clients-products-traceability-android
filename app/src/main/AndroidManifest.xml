@@ -41,7 +41,8 @@
         <activity
             android:name=".ui.activities.CompletionRegisterActivity"
             android:parentActivityName=".ui.activities.RegisterActivity" />
-        <activity android:name=".ui.activities.InvoiceBindingActivity"></activity>
+        <activity android:name=".ui.activities.InvoiceBindingActivity"
+            android:parentActivityName=".ui.activities.MainActivity"></activity>
     </application>
 
 </manifest>

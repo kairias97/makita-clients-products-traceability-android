@@ -76,6 +76,10 @@ class ProductsFragment : Fragment(), IProductsFragmentView, ProductAdapter.OnPro
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        mProductPresenter.getProducts()
+    }
 
     override fun onDetach() {
         super.onDetach()
