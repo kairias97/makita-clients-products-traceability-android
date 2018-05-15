@@ -86,6 +86,21 @@ class MainActivity : BaseActivity() {
                         navigateToBindInvoice()
                     }
 
+                    override fun onLoadingInvoices() {
+                        activity.showProgressDialog(getString(R.string.progress_dialog_invoice_loading))
+                    }
+
+                    override fun onLoadingInvoicesFinished() {
+                        activity.hideProgressDialog()
+                    }
+
+                    override fun onCustomMessage(msg: String) {
+                        activity.toast(msg)
+                    }
+
+                    override fun onError() {
+                        activity.toast(R.string.generic_500_error)
+                    }
                 })
             }
             R.id.navigation_workshop_orders -> {

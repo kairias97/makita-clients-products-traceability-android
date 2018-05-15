@@ -25,7 +25,8 @@ class ProductsViewHolder: RecyclerView.ViewHolder {
     }
     fun bindData(product: Product, listener: ProductAdapter.OnProductSelecteListener){
         mDescripcionTextView.text = product.description
-        if(product.serialNumber != null || product.serialNumber != ""){
+        //mSerialTextView.visibility = View.GONE
+        if(product.serialNumber != null && product.serialNumber != ""){
             mSerialTextView.text = product.serialNumber
         }
         else{
@@ -33,5 +34,9 @@ class ProductsViewHolder: RecyclerView.ViewHolder {
         }
         mPurchasedDateTextView.text = DateUtil.parseDateStringToFormat(product.purchaseDate,"yyyy-mm-dd","dd/mm/yy")
         mPurchasedStoreTextView.text = product.purchaseStore
+
+        itemView.setOnClickListener {
+            listener.onProductSelected(product)
+        }
     }
 }
