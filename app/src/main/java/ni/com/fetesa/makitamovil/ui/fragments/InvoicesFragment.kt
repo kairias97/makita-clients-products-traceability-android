@@ -56,7 +56,7 @@ class InvoicesFragment: Fragment(), InvoiceAdapter.OnInvoiceSelectedListener, II
                         Context.MODE_PRIVATE)
         ))
 
-        activity.title = "Facturas Agregadas"
+        activity.title = "Facturas Agregadasg"
 
         mTextView.visibility = View.GONE
 
