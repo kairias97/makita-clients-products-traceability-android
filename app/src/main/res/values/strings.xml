@@ -66,4 +66,19 @@
     <string name="progress_dialog_invoice_binding">Vinculando la factura...</string>
     <string name="label_no_invoices">Aún no hay facturas registradas</string>
     <string name="progress_dialog_invoice_loading">Cargando facturas...</string>
+    <string name="edit_serial_btn">Ingresar serial para este producto</string>
+    <string name="input_productDetail_description">Descripción del producto</string>
+    <string name="input_productDetail_price">Precio</string>
+    <string name="input_productDetail_measureUnit">Unidad de medida</string>
+    <string name="input_productDetail_partNumber">Número de parte</string>
+    <string name="input_productDetail_serialNumber">Número Serial</string>
+    <string name="input_productDetail_store">Sucursal</string>
+    <string name="input_productDetail_type">Tipo de compra</string>
+    <string name="input_productDetail_physicalInvoiceNumber">Número físico de factura</string>
+    <string name="input_productDetail_date">Fecha</string>
+    <string name="input_productDetail_kgWeight">Peso en KG</string>
+    <string name="edit_serial_save_btn">Guardar Serial</string>
+    <string name="progress_dialog_product_saving_warranty">Guardando serial</string>
+    <string name="progress_dialog_getting_warranty">Obteniendo garantía...</string>
+    <string name="check_warranty_btn">Verificar garantía</string>
 </resources>

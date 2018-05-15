@@ -1,6 +1,7 @@
 package ni.com.fetesa.makitamovil.ui.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
@@ -18,6 +19,7 @@ import ni.com.fetesa.makitamovil.data.remote.MakitaRemoteDataSource
 import ni.com.fetesa.makitamovil.model.Product
 import ni.com.fetesa.makitamovil.presenter.IProductsFragmentPresenter
 import ni.com.fetesa.makitamovil.presenter.implementations.ProductsFragmentPresenterImpl
+import ni.com.fetesa.makitamovil.ui.activities.ProductDetailActivity
 import ni.com.fetesa.makitamovil.ui.adapters.ProductAdapter
 import ni.com.fetesa.makitamovil.ui.fragmentViews.IProductsFragmentView
 
@@ -111,7 +113,9 @@ class ProductsFragment : Fragment(), IProductsFragmentView, ProductAdapter.OnPro
         mListener?.onError()
     }
     override fun onProductSelected(product: Product) {
-        mListener?.onCustomMessage("Se selecciono un producto")
+        val intent = Intent(activity, ProductDetailActivity::class.java)
+        intent.putExtra("product", product)
+        startActivity(intent)
     }
 
     override fun setProductList(data: MutableList<Product>) {
