@@ -107,4 +107,9 @@ class InvoiceDetailActivity : BaseActivity(), IInvoiceDetailView, ProductAdapter
     override fun onProductSelected(product: Product) {
         navigateToProductDetail(product)
     }
+    override fun navigateToLogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+    }
 }

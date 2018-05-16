@@ -13,4 +13,5 @@ interface IInvoiceBindingView {
     fun showCustomMessage(msg: String)
     fun showError()
     fun setProductsList(data: MutableList<Product>)
+    fun navigateToLogin()
 }

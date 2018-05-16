@@ -11,4 +11,5 @@ interface IProductsFragmentView {
     fun showCustomMessage(msg: String)
     fun showError()
     fun setProductList(data: MutableList<Product>)
+    fun navigateToLogin()
 }

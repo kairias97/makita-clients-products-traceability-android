@@ -1,6 +1,7 @@
 package ni.com.fetesa.makitamovil.ui.activities
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.NavUtils
@@ -178,6 +179,12 @@ class ProductDetailActivity : BaseActivity(), IProductDetailView {
         mBtnWarranty.visibility = View.VISIBLE
         mBtnSave.visibility = View.GONE
         lockUnlockFields(false)
+    }
+
+    override fun navigateToLogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
     }
 
     override fun showWarranty(warranty: Warranty) {

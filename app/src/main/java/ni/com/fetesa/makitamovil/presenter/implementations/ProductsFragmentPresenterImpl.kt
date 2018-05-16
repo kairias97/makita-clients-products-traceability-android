@@ -41,6 +41,7 @@ class ProductsFragmentPresenterImpl: IProductsFragmentPresenter {
                 mProductFragmentView.hideLoadingProducts()
                 mProductFragmentView.showCustomMessage(message)
                 mSharedPrefManager.clearPreferences()
+                mProductFragmentView.navigateToLogin()
             }
 
             override fun onNetworkFailure() {

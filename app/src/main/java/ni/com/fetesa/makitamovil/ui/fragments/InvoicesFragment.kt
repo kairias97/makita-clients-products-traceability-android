@@ -19,6 +19,7 @@ import ni.com.fetesa.makitamovil.model.Invoice
 import ni.com.fetesa.makitamovil.presenter.IInvoiceFragmentPresenter
 import ni.com.fetesa.makitamovil.presenter.implementations.InvoiceFragmentPresenterImpl
 import ni.com.fetesa.makitamovil.ui.activities.InvoiceDetailActivity
+import ni.com.fetesa.makitamovil.ui.activities.LoginActivity
 import ni.com.fetesa.makitamovil.ui.adapters.InvoiceAdapter
 import ni.com.fetesa.makitamovil.ui.fragmentViews.IInvoiceFragmentView
 
@@ -122,6 +123,11 @@ class InvoicesFragment: Fragment(), InvoiceAdapter.OnInvoiceSelectedListener, II
         else{
             mTextView.visibility = View.VISIBLE
         }
+    }
+    override fun navigateToLogin() {
+        val intent = Intent(activity, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
     }
 
     companion object {
