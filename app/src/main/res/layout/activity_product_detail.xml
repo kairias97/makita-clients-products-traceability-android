@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ni.com.fetesa.makitamovil.ui.activities.ProductDetailActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_product_serial"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout_productDetail_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:errorEnabled="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_text_productDetail_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:hint="@string/input_productDetail_description"
+                    android:inputType="textPersonName"
+                    android:focusable="false"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout_productDetail_serialNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/text_input_layout_productDetail_description"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:errorEnabled="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_text_productDetail_serialNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:hint="@string/input_productDetail_serialNumber"
+                    android:inputType="textPersonName"
+                    android:focusedByDefault="false"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout_productDetail_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/text_input_layout_productDetail_serialNumber"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:errorEnabled="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_text_productDetail_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:hint="@string/input_productDetail_price"
+                    android:inputType="textPersonName"
+                    android:focusable="false"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout_productDetail_measureUnit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/text_input_layout_productDetail_price"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:errorEnabled="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_text_productDetail_measureUnit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:hint="@string/input_productDetail_measureUnit"
+                    android:inputType="textPersonName"
+                    android:focusable="false"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout_productDetail_partNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/text_input_layout_productDetail_measureUnit"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:errorEnabled="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_text_productDetail_partNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:hint="@string/input_productDetail_partNumber"
+                    android:inputType="textPersonName"
+                    android:focusable="false"/>
+            </android.support.design.widget.TextInputLayout>
+
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout_productDetail_fetesaStore"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/text_input_layout_productDetail_partNumber"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:errorEnabled="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_text_productDetail_fetesaStore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:hint="@string/input_productDetail_store"
+                    android:inputType="textPersonName"
+                    android:focusable="false"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout_productDetail_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/text_input_layout_productDetail_fetesaStore"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:errorEnabled="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_text_productDetail_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:hint="@string/input_productDetail_type"
+                    android:inputType="textPersonName"
+                    android:focusable="false"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout_productDetail_physicalInvoiceNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/text_input_layout_productDetail_type"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:errorEnabled="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_text_productDetail_physicalInvoiceNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:hint="@string/input_productDetail_physicalInvoiceNumber"
+                    android:inputType="textPersonName"
+                    android:focusable="false"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout_productDetail_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/text_input_layout_productDetail_physicalInvoiceNumber"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:errorEnabled="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_text_productDetail_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:hint="@string/input_productDetail_date"
+                    android:inputType="textPersonName"
+                    android:focusable="false"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout_productDetail_kgWeight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/text_input_layout_productDetail_date"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:errorEnabled="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_text_productDetail_kgWeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:hint="@string/input_productDetail_kgWeight"
+                    android:inputType="textPersonName"
+                    android:focusable="false"/>
+            </android.support.design.widget.TextInputLayout>
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_product_serial"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorAccent"
+        android:text="@string/edit_serial_btn"
+        app:layout_constraintTop_toBottomOf="@id/scrollView"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        android:textColor="@color/colorWhite"
+        />
+    <Button
+        android:id="@+id/btn_product_serial_save"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorAccent"
+        android:text="@string/edit_serial_save_btn"
+        app:layout_constraintTop_toBottomOf="@id/btn_product_serial"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        android:textColor="@color/colorWhite"
+        />
+    <Button
+        android:id="@+id/btn_product_warranty"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorAccent"
+        android:text="@string/check_warranty_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_product_serial_save"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        android:textColor="@color/colorWhite"
+        />
+
+</android.support.constraint.ConstraintLayout>
