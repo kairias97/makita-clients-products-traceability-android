@@ -3,8 +3,12 @@ package ni.com.fetesa.makitamovil.ui.activities
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.NavUtils
 import android.text.format.DateUtils
+import android.view.MenuItem
 import android.view.View
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import ni.com.fetesa.makitamovil.R
@@ -112,6 +116,25 @@ class ProductDetailActivity : BaseActivity(), IProductDetailView {
         mBtnWarranty.setOnClickListener {
             mProductDetailPresenter.getWarranty(mProduct.id)
         }
+
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
+
+        supportActionBar!!.title = "Detalle de producto"
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item!!.itemId){
+            android.R.id.home -> {
+                returnTop()
+            }
+        }
+        return true
+    }
+    private fun returnTop(){
+        //NavUtils.navigateUpFromSameTask(this)
+        finish()
     }
 
     private fun lockUnlockFields(value: Boolean){

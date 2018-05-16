@@ -27,5 +27,9 @@ class InvoiceViewHolder: RecyclerView.ViewHolder {
         mTxtAmount.text = "C$ ${invoice.amount}"
         mTxtStore.text = invoice.purchaseStore
         mTxtDate.text = DateUtil.parseDateStringToFormat(invoice.issuedDate.substring(0,10),"yyyy-mm-dd","dd/mm/yy")
+
+        itemView.setOnClickListener {
+            listener.onInvoiceSelected(invoice)
+        }
     }
 }

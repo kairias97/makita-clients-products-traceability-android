@@ -45,7 +45,8 @@
             android:name=".ui.activities.InvoiceBindingActivity"
             android:parentActivityName=".ui.activities.MainActivity" />
         <activity android:name=".ui.activities.ProductDetailActivity" />
-        <activity android:name=".ui.activities.InvoiceDetailActivity"></activity>
+        <activity android:name=".ui.activities.InvoiceDetailActivity"
+            android:parentActivityName=".ui.activities.MainActivity"></activity>
     </application>
 
 </manifest>

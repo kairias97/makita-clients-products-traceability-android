@@ -81,4 +81,5 @@
     <string name="progress_dialog_product_saving_warranty">Guardando serial</string>
     <string name="progress_dialog_getting_warranty">Obteniendo garantía...</string>
     <string name="check_warranty_btn">Verificar garantía</string>
+    <string name="label_invoice_detail">Productos registrados en esta factura:</string>
 </resources>

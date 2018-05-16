@@ -62,7 +62,7 @@
                     android:enabled="false"
                     android:hint="@string/input_productDetail_serialNumber"
                     android:inputType="textPersonName"
-                    android:focusable="false"/>
+                    android:focusedByDefault="false"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout

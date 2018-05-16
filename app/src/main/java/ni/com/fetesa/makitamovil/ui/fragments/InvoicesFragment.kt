@@ -1,6 +1,7 @@
 package ni.com.fetesa.makitamovil.ui.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
@@ -17,6 +18,7 @@ import ni.com.fetesa.makitamovil.data.remote.MakitaRemoteDataSource
 import ni.com.fetesa.makitamovil.model.Invoice
 import ni.com.fetesa.makitamovil.presenter.IInvoiceFragmentPresenter
 import ni.com.fetesa.makitamovil.presenter.implementations.InvoiceFragmentPresenterImpl
+import ni.com.fetesa.makitamovil.ui.activities.InvoiceDetailActivity
 import ni.com.fetesa.makitamovil.ui.adapters.InvoiceAdapter
 import ni.com.fetesa.makitamovil.ui.fragmentViews.IInvoiceFragmentView
 
@@ -73,7 +75,7 @@ class InvoicesFragment: Fragment(), InvoiceAdapter.OnInvoiceSelectedListener, II
     }
 
     override fun onInvoiceSelected(invoice: Invoice) {
-
+        navigateToInvoiceDetail(invoice)
     }
 
     override fun onResume() {
@@ -103,6 +105,12 @@ class InvoicesFragment: Fragment(), InvoiceAdapter.OnInvoiceSelectedListener, II
 
     override fun showError() {
         mListener?.onError()
+    }
+
+    override fun navigateToInvoiceDetail(invoice: Invoice) {
+        val intent = Intent(activity, InvoiceDetailActivity::class.java)
+        intent.putExtra("invoiceID",invoice.id)
+        startActivity(intent)
     }
 
     override fun setInvoicesList(data: MutableList<Invoice>) {
