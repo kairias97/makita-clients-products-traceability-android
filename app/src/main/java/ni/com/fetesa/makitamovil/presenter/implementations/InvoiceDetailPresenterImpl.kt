@@ -40,6 +40,7 @@ class InvoiceDetailPresenterImpl: IInvoiceDetailPresenter {
                 mInvoiceDetailView.hideLoadingProductsProgress()
                 mInvoiceDetailView.showCustomMessage(message)
                 mSharedPrefManager.clearPreferences()
+                mInvoiceDetailView.navigateToLogin()
             }
 
             override fun onNetworkFailure() {

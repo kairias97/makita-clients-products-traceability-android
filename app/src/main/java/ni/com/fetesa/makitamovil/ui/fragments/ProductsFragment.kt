@@ -19,6 +19,7 @@ import ni.com.fetesa.makitamovil.data.remote.MakitaRemoteDataSource
 import ni.com.fetesa.makitamovil.model.Product
 import ni.com.fetesa.makitamovil.presenter.IProductsFragmentPresenter
 import ni.com.fetesa.makitamovil.presenter.implementations.ProductsFragmentPresenterImpl
+import ni.com.fetesa.makitamovil.ui.activities.LoginActivity
 import ni.com.fetesa.makitamovil.ui.activities.ProductDetailActivity
 import ni.com.fetesa.makitamovil.ui.adapters.ProductAdapter
 import ni.com.fetesa.makitamovil.ui.fragmentViews.IProductsFragmentView
@@ -127,6 +128,12 @@ class ProductsFragment : Fragment(), IProductsFragmentView, ProductAdapter.OnPro
         else{
             mTextView.visibility = View.VISIBLE
         }
+    }
+
+    override fun navigateToLogin() {
+        val intent = Intent(activity, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
     }
 
     companion object {

@@ -14,4 +14,5 @@ interface IProductDetailView {
     fun showError()
     fun showWarranty(warranty: Warranty)
     fun savingSerialSuccessful()
+    fun navigateToLogin()
 }

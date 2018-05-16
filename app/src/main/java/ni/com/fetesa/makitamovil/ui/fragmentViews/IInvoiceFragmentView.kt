@@ -12,4 +12,5 @@ interface IInvoiceFragmentView {
     fun showError()
     fun setInvoicesList(data: MutableList<Invoice>)
     fun navigateToInvoiceDetail(invoice: Invoice)
+    fun navigateToLogin()
 }

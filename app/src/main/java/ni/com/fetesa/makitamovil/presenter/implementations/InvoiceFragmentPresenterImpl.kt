@@ -41,6 +41,7 @@ class InvoiceFragmentPresenterImpl: IInvoiceFragmentPresenter {
                 mInvoiceFragmentView.hideInvoiceLoadingProgress()
                 mInvoiceFragmentView.showCustomMessage(message)
                 mSharedPrefManager.clearPreferences()
+                mInvoiceFragmentView.navigateToLogin()
             }
 
             override fun onNetworkFailure() {

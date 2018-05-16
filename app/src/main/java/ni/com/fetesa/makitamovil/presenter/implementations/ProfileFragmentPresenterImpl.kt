@@ -46,6 +46,7 @@ class ProfileFragmentPresenterImpl:IProfileFragmentPresenter {
                 mProfileFragmentView.hideLoadingProfile()
                 mSharedPrefManager.clearPreferences()
                 mProfileFragmentView.showCustomMessage(response.message!!)
+                mProfileFragmentView.navigateToLogin()
             }
         })
     }
@@ -67,10 +68,12 @@ class ProfileFragmentPresenterImpl:IProfileFragmentPresenter {
                 mProfileFragmentView.hideLoadingMakitaPoints()
                 mSharedPrefManager.clearPreferences()
                 mProfileFragmentView.showCustomMessage(message)
+                mProfileFragmentView.navigateToLogin()
             }
 
             override fun onNetworkFailure() {
                 mProfileFragmentView.hideLoadingMakitaPoints()
+                mProfileFragmentView.showError()
             }
 
         })
@@ -90,6 +93,7 @@ class ProfileFragmentPresenterImpl:IProfileFragmentPresenter {
                 mProfileFragmentView.hideSavingProfileProgress()
                 mSharedPrefManager.clearPreferences()
                 mProfileFragmentView.showCustomMessage(response.message!!)
+                mProfileFragmentView.navigateToLogin()
             }
 
             override fun onFailure() {

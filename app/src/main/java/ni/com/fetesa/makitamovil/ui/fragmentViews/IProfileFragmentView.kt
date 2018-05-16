@@ -18,4 +18,5 @@ interface IProfileFragmentView {
     fun showSavingProfileProgress()
     fun hideSavingProfileProgress()
     fun savedProfileSuccessful()
+    fun navigateToLogin()
 }

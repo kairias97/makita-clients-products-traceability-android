@@ -42,6 +42,7 @@ class ProductDetailPresenterImpl: IProductDetailPresenter {
                 mProductDetailView.hideSavingSerialProgress()
                 mProductDetailView.showCustomMessage(message)
                 mSharedPrefManager.clearPreferences()
+                mProductDetailView.navigateToLogin()
             }
 
             override fun onNetworkFailure() {
@@ -69,6 +70,7 @@ class ProductDetailPresenterImpl: IProductDetailPresenter {
                 mProductDetailView.hideGettingWarrantyProgress()
                 mProductDetailView.showCustomMessage(message)
                 mSharedPrefManager.clearPreferences()
+                mProductDetailView.navigateToLogin()
             }
 
             override fun onNetworkFailure() {

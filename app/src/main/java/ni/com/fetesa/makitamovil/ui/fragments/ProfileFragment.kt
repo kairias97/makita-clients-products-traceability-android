@@ -1,6 +1,7 @@
 package ni.com.fetesa.makitamovil.ui.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.opengl.Visibility
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
@@ -18,6 +19,7 @@ import ni.com.fetesa.makitamovil.model.MakitaUserSession
 import ni.com.fetesa.makitamovil.model.UserFidelizationPoints
 import ni.com.fetesa.makitamovil.presenter.IProfileFragmentPresenter
 import ni.com.fetesa.makitamovil.presenter.implementations.ProfileFragmentPresenterImpl
+import ni.com.fetesa.makitamovil.ui.activities.LoginActivity
 import ni.com.fetesa.makitamovil.ui.fragmentViews.IProfileFragmentView
 import ni.com.fetesa.makitamovil.utils.DateUtil
 import ni.com.fetesa.makitamovil.utils.toast
@@ -186,6 +188,11 @@ class ProfileFragment : Fragment(), IProfileFragmentView, DatePickerFragment.Dat
     override fun OnDateSelected(year: Int, month: Int, day: Int) {
         var birthDate = DateUtil.parseDateToFormat(year, month, day, "dd/MM/yyyy")
         mTxtBirthDate.setText(birthDate)
+    }
+    override fun navigateToLogin() {
+        val intent = Intent(activity, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
     }
 
     private fun loadData(data: MakitaProfile){

@@ -12,4 +12,5 @@ interface IInvoiceDetailView {
     fun showError()
     fun setProductsList(data: MutableList<Product>)
     fun navigateToProductDetail(product: Product)
+    fun navigateToLogin()
 }

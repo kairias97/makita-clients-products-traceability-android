@@ -43,6 +43,7 @@ class InvoiceBindingPresenterImpl: IInvoiceBindingPresenter {
                 mInvoiceBindingView.hideBindingInvoiceProgress()
                 mInvoiceBindingView.showCustomMessage(message)
                 mSharedPrefManager.clearPreferences()
+                mInvoiceBindingView.navigateToLogin()
             }
 
             override fun onNetworkFailure() {
@@ -70,6 +71,7 @@ class InvoiceBindingPresenterImpl: IInvoiceBindingPresenter {
                 mInvoiceBindingView.hideGettingProductsProgress()
                 mInvoiceBindingView.showCustomMessage(message)
                 mSharedPrefManager.clearPreferences()
+                mInvoiceBindingView.navigateToLogin()
             }
 
             override fun onNetworkFailure() {
