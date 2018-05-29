@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import ni.com.fetesa.makitamovil.R
 import ni.com.fetesa.makitamovil.model.Invoice
 import ni.com.fetesa.makitamovil.model.UserFidelizationPoints
+import ni.com.fetesa.makitamovil.services.RegistrationIntentService
 import ni.com.fetesa.makitamovil.ui.fragments.InvoicesFragment
 import ni.com.fetesa.makitamovil.ui.fragments.ProductsFragment
 import ni.com.fetesa.makitamovil.ui.fragments.ProfileFragment
@@ -25,7 +26,7 @@ class MainActivity : BaseActivity() {
 
         navigationView = findViewById(R.id.navigation)
 
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         fragmentTransaction(ProductsFragment.newInstance(object: ProductsFragment.OnFragmentInteractionListener {
             override fun onAddProductsSelected() {
                 navigateToBindInvoice()
@@ -49,6 +50,8 @@ class MainActivity : BaseActivity() {
         }))
 
         navigationView.selectedItemId = R.id.navigation_products
+        val intent = Intent(this, RegistrationIntentService::class.java)
+        startService(intent)
     }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
