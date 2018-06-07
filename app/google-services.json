@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "402968118738",
+    "firebase_url": "https://makita-fetesa.firebaseio.com",
+    "project_id": "makita-fetesa",
+    "storage_bucket": "makita-fetesa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402968118738:android:6a1e9facee2cbc10",
+        "android_client_info": {
+          "package_name": "ni.com.fetesa.makitamovil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402968118738-nb75jdsjleomnatspqgerq8r27ruql5d.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "402968118738-nb75jdsjleomnatspqgerq8r27ruql5d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz2d5MGpWAcdWuYzmNE0vD7l8zoayDxuw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
