@@ -7,6 +7,7 @@ import android.support.v4.content.LocalBroadcastManager
 import android.util.Log
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.FirebaseMessaging
+import ni.com.fetesa.makitamovil.model.MakitaUserSession
 import java.io.IOException
 
 class RegistrationIntentService : IntentService("RegistrationIntentService") {
@@ -60,7 +61,7 @@ class RegistrationIntentService : IntentService("RegistrationIntentService") {
 
     companion object {
 
-
-        private val TOPICS = arrayOf("global", "news")
+        private val users =  "${MakitaUserSession.instance.authToken ?: ""}"
+        private val TOPICS = arrayOf("global", "news", users)
     }
 }

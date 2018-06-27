@@ -35,6 +35,9 @@ open class FCMListenerService : FirebaseMessagingService() {
                     .setContentTitle(remoteMessage.notification?.title ?: "Notificación Makita")
                     .setContentText(remoteMessage.notification?.body ?: "")
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setStyle(NotificationCompat.BigTextStyle()
+                            .bigText(remoteMessage.notification?.body ?: ""))
+
             val notificationManager = NotificationManagerCompat.from(this)
 
 // notificationId is a unique int for each notification that you must define
