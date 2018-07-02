@@ -358,7 +358,32 @@ class MakitaRemoteDataSource {
 
         })
     }
+    fun updatePassword(token: String, body: PasswordUpdate, callback: IMakitaResponseCallback<PasswordUpdateResponse>){
+        val authCall = MakitaAPI.instance.service!!.updatePassword(token, body)
+        authCall.enqueue(object: Callback<PasswordUpdateResponse>{
+            override fun onFailure(call: Call<PasswordUpdateResponse>?, t: Throwable?) {
+                callback.onNetworkFailure()
+            }
 
+            override fun onResponse(call: Call<PasswordUpdateResponse>?, response: Response<PasswordUpdateResponse>?) {
+                when(response!!.code()){
+                    200 -> {
+                        callback.onSuccess(response!!.body()!!)
+                    }
+                    401 -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onSessionExpired(customMessage.message)
+                    }
+                    else -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onCustomMessage(customMessage.message)
+                    }
+                }
+            }
+        })
+    }
 
     companion object {
         val instance: MakitaRemoteDataSource by lazy { MakitaRemoteDataSource() }

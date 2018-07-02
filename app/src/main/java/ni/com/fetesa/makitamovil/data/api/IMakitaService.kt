@@ -35,6 +35,8 @@ interface IMakitaService {
     fun saveWarranty(@Header("Authorization") token: String,  @Path("productID") productID: Long, @Body warrantyRequest: WarrantyBindingRequest): Call<Warranty>
     @GET(URL_PRODUCTS_Warranty)
     fun getProductWarranty(@Header("Authorization") token: String, @Path("productID") productID: Long): Call<Warranty>
+    @PUT(URL_UPDATE_PASSWORD)
+    fun updatePassword(@Header("Authorization") token: String, @Body body: PasswordUpdate): Call<PasswordUpdateResponse>
 
 
 }
