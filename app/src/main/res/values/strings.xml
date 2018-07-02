@@ -82,4 +82,20 @@
     <string name="progress_dialog_getting_warranty">Obteniendo garantía...</string>
     <string name="check_warranty_btn">Verificar garantía</string>
     <string name="label_invoice_detail">Productos registrados en esta factura:</string>
+    <string name="menu_change_password">Cambiar contraseña</string>
+    <string name="menu_logout">Cerrar sesión</string>
+    <string name="options">Opciones\\</string>
+    <string name="progress_dialog_updating_password">Actualizando contraseña...</string>
+    <string name="label_update_password">Por favor, ingrese su anterior contraseña, acto seguido ingrese su nueva contraseña y confirme:</string>
+    <string name="input_old_password">Contraseña actual</string>
+    <string name="button_update_password">Actualizar contraseña</string>
+    <string name="input_new_password">Nueva contraseña</string>
+    <string name="input_confirm_new_password">Confirme nueva contraseña</string>
+    <string name="validate_no_empty_field">Este campo es requerido</string>
+    <string name="validate_no_equal_passwords">Las contraseñas no coinciden</string>
+    <string name="title_logout">¿Desea cerrar sesión?</string>
+    <string name="message_logout">¿Está seguro que desea cerrar sesión?</string>
+    <string name="logout_accept">Aceptar</string>
+    <string name="logout_cancel">Cancelar</string>
+    <string name="message_logging_out">Cerrando sesión...</string>
 </resources>

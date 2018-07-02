@@ -6,19 +6,27 @@ import android.support.v4.app.Fragment
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import ni.com.fetesa.makitamovil.R
+import ni.com.fetesa.makitamovil.data.local.SharedPrefManager
 import ni.com.fetesa.makitamovil.model.Invoice
 import ni.com.fetesa.makitamovil.model.UserFidelizationPoints
+import ni.com.fetesa.makitamovil.presenter.IMainPresenter
+import ni.com.fetesa.makitamovil.presenter.implementations.MainPresenterImpl
 import ni.com.fetesa.makitamovil.services.RegistrationIntentService
 import ni.com.fetesa.makitamovil.ui.fragments.InvoicesFragment
 import ni.com.fetesa.makitamovil.ui.fragments.ProductsFragment
 import ni.com.fetesa.makitamovil.ui.fragments.ProfileFragment
+import ni.com.fetesa.makitamovil.ui.views.IMainView
 import ni.com.fetesa.makitamovil.utils.toast
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), IMainView {
 
     private lateinit var navigationView: BottomNavigationView
+    private lateinit var mMainPresenter: IMainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +35,12 @@ class MainActivity : BaseActivity() {
         navigationView = findViewById(R.id.navigation)
 
         navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        mMainPresenter = MainPresenterImpl(this, SharedPrefManager(
+                getSharedPreferences(SharedPrefManager.PreferenceFiles.UserSharedPref.toString(),
+                        Context.MODE_PRIVATE)
+        ))
+
         fragmentTransaction(ProductsFragment.newInstance(object: ProductsFragment.OnFragmentInteractionListener {
             override fun onAddProductsSelected() {
                 navigateToBindInvoice()
@@ -52,6 +66,24 @@ class MainActivity : BaseActivity() {
         navigationView.selectedItemId = R.id.navigation_products
         val intent = Intent(this, RegistrationIntentService::class.java)
         startService(intent)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        var inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item!!.itemId){
+            R.id.action_password -> {
+                this.prepareToNavigateToPasswordUpdate()
+            }
+            R.id.action_logout -> {
+                this.confirmLogout()
+            }
+        }
+        return true
     }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -161,5 +193,43 @@ class MainActivity : BaseActivity() {
         supportFragmentManager.beginTransaction()
                 .replace(R.id.content_fragments, fragment)
                 .commit()
+    }
+
+    override fun prepareToNavigateToPasswordUpdate() {
+        val intent = Intent(this, PasswordUpdateActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun confirmLogout() {
+        this.showConfirmDialog(titleResId = R.string.title_logout,
+                iconResId = R.drawable.baseline_warning_black_48,
+                messageResId = R.string.message_logout,
+                positiveBtnResId = R.string.logout_accept,
+                negativeBtnResId = R.string.logout_cancel,
+                positiveListener = android.content.DialogInterface.OnClickListener { dialog, which ->
+                    dialog.dismiss()
+                    this.executeLogout()
+                },
+                negativeListener = android.content.DialogInterface.OnClickListener { dialog, which ->
+                    dialog.dismiss()
+                })
+    }
+
+    override fun executeLogout() {
+        mMainPresenter.executeLogout()
+    }
+
+    override fun navigateToLogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+    }
+
+    override fun showLoggingOutProgress() {
+        this.showProgressDialog(getString(R.string.message_logging_out))
+    }
+
+    override fun hideLoggingOutProgress() {
+        this.hideProgressDialog()
     }
 }
