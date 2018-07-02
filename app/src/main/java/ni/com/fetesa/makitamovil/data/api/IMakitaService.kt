@@ -37,6 +37,11 @@ interface IMakitaService {
     fun getProductWarranty(@Header("Authorization") token: String, @Path("productID") productID: Long): Call<Warranty>
     @PUT(URL_UPDATE_PASSWORD)
     fun updatePassword(@Header("Authorization") token: String, @Body body: PasswordUpdate): Call<PasswordUpdateResponse>
-
+    @POST(URL_RESET_PASSWORD)
+    fun resetPassword(@Body body: PasswordReset): Call<PasswordResetResponse>
+    @POST(URL_RESET_PASSWORD_VERIFY_CODE)
+    fun resetPasswordVerifyCode(@Body body: PasswordResetVerification): Call<PasswordResetVerificationResponse>
+    @POST(URL_RESET_PASSWORD_COMPLETION)
+    fun resetPasswordCompletion(@Body body: PasswordResetCompletion): Call<PasswordResetCompletionResponse>
 
 }

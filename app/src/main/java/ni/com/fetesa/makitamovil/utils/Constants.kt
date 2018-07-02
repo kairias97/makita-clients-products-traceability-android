@@ -17,6 +17,9 @@ const val URL_INVOICES_PRODUCTS = "clients/invoices/{invoiceID}/products"
 const val URL_INVOICES_BINDING = "clients/invoices/binding"
 const val URL_PRODUCTS_Warranty = "clients/products/{productID}/warranty"
 const val URL_UPDATE_PASSWORD = "authentication/password/update/"
+const val URL_RESET_PASSWORD = "authentication/passwordReset/request/"
+const val URL_RESET_PASSWORD_VERIFY_CODE = "authentication/passwordReset/codeVerification"
+const val URL_RESET_PASSWORD_COMPLETION = "authentication/passwordReset/submission/"
 
 
 const val TYPE_ID_NUMERO_CLIENTE = 1

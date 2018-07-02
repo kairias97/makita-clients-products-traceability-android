@@ -5,7 +5,7 @@
     <string name="button_login">Iniciar sesión</string>
     <string name="textView_register">¿No tienes cuenta? Regístrate.</string>
     <string name="textView_forgot_password">Olvidé mi contraseña.</string>
-    <string name="label_forgot_password">Por favor ingrese su correo electrónico para recuperar su contraseña:</string>
+    <string name="label_forgot_password">Por favor ingrese su usuario para recuperar su contraseña:</string>
     <string name="button_verify_email">Verificar</string>
     <string name="input_user_identification_card">Identificación</string>
     <string name="label_register">Por favor, ingrese su cédula de identidad para verificar si ya es cliente Makita:</string>
@@ -93,9 +93,16 @@
     <string name="input_confirm_new_password">Confirme nueva contraseña</string>
     <string name="validate_no_empty_field">Este campo es requerido</string>
     <string name="validate_no_equal_passwords">Las contraseñas no coinciden</string>
-    <string name="title_logout">¿Desea cerrar sesión?</string>
-    <string name="message_logout">¿Está seguro que desea cerrar sesión?</string>
+    <string name="title_logout">Cerrar sesión</string>
+    <string name="message_logout">¿Está seguro que desea cerrar sesión? Será a la pantalla de inicio de sesión</string>
     <string name="logout_accept">Aceptar</string>
     <string name="logout_cancel">Cancelar</string>
     <string name="message_logging_out">Cerrando sesión...</string>
+    <string name="progress_dialog_validating_user">Validando usuario...</string>
+    <string name="generic_empty_fields">Debe llenar los campos solicitados</string>
+    <string name="label_forgot_password_verification_code">Por favor, ingrese el código que ha recibido en su correo electrónico:</string>
+    <string name="progress_dialog_forgot_password_verification_code">Validando código...</string>
+    <string name="label_forgot_password_completion">Por favor, ingrese su nueva contraseña:</string>
+    <string name="button_end">Finalizar</string>
+    <string name="progress_dialog_competion_forgot_password">Guardando nueva contraseña...</string>
 </resources>
