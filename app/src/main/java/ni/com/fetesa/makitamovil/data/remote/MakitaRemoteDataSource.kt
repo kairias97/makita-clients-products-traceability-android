@@ -384,6 +384,85 @@ class MakitaRemoteDataSource {
             }
         })
     }
+    fun resetPassword(body: PasswordReset, callback: IMakitaResponseCallback<PasswordResetResponse>){
+        val authCall = MakitaAPI.instance.service!!.resetPassword(body)
+        authCall.enqueue(object: Callback<PasswordResetResponse>{
+            override fun onFailure(call: Call<PasswordResetResponse>?, t: Throwable?) {
+                callback.onNetworkFailure()
+            }
+
+            override fun onResponse(call: Call<PasswordResetResponse>?, response: Response<PasswordResetResponse>?) {
+                when(response!!.code()){
+                    200 -> {
+                        callback.onSuccess(response!!.body()!!)
+                    }
+                    401 -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onSessionExpired(customMessage.message)
+                    }
+                    else -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onCustomMessage(customMessage.message)
+                    }
+                }
+            }
+        })
+    }
+    fun resetPasswordVerifyCode(body: PasswordResetVerification, callback: IMakitaResponseCallback<PasswordResetVerificationResponse>){
+        val authCall = MakitaAPI.instance.service!!.resetPasswordVerifyCode(body)
+        authCall.enqueue(object: Callback<PasswordResetVerificationResponse>{
+            override fun onFailure(call: Call<PasswordResetVerificationResponse>?, t: Throwable?) {
+                callback.onNetworkFailure()
+            }
+
+            override fun onResponse(call: Call<PasswordResetVerificationResponse>?, response: Response<PasswordResetVerificationResponse>?) {
+                when(response!!.code()){
+                    200 -> {
+                        callback.onSuccess(response!!.body()!!)
+                    }
+                    401 -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onSessionExpired(customMessage.message)
+                    }
+                    else -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onCustomMessage(customMessage.message)
+                    }
+                }
+            }
+        })
+    }
+
+    fun resetPasswordCompletion(body: PasswordResetCompletion, callback: IMakitaResponseCallback<PasswordResetCompletionResponse>){
+        val authCall = MakitaAPI.instance.service!!.resetPasswordCompletion(body)
+        authCall.enqueue(object: Callback<PasswordResetCompletionResponse>{
+            override fun onFailure(call: Call<PasswordResetCompletionResponse>?, t: Throwable?) {
+                callback.onNetworkFailure()
+            }
+
+            override fun onResponse(call: Call<PasswordResetCompletionResponse>?, response: Response<PasswordResetCompletionResponse>?) {
+                when(response!!.code()){
+                    200 -> {
+                        callback.onSuccess(response!!.body()!!)
+                    }
+                    401 -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onSessionExpired(customMessage.message)
+                    }
+                    else -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onCustomMessage(customMessage.message)
+                    }
+                }
+            }
+        })
+    }
 
     companion object {
         val instance: MakitaRemoteDataSource by lazy { MakitaRemoteDataSource() }

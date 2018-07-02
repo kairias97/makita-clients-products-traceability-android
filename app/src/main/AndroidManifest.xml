@@ -71,8 +71,14 @@
         <activity
             android:name=".ui.activities.InvoiceDetailActivity"
             android:parentActivityName=".ui.activities.MainActivity" />
-        <activity android:name=".ui.activities.PasswordUpdateActivity"
-            android:parentActivityName=".ui.activities.MainActivity"></activity>
+        <activity
+            android:name=".ui.activities.PasswordUpdateActivity"
+            android:parentActivityName=".ui.activities.MainActivity" />
+        <activity
+            android:name=".ui.activities.VerificationCodeForgotPasswordActivity"
+            android:parentActivityName=".ui.activities.ForgotPasswordActivity" />
+        <activity android:name=".ui.activities.CompletionForgotPasswordActivity"
+            android:parentActivityName=".ui.activities.ForgotPasswordActivity"></activity>
     </application>
 
 </manifest>
