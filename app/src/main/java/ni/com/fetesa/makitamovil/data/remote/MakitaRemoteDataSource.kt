@@ -463,6 +463,85 @@ class MakitaRemoteDataSource {
             }
         })
     }
+    fun getQuotedOrders(token: String, callback: IMakitaResponseCallback<List<OrderHeader>>){
+        val authCall = MakitaAPI.instance.service!!.getQuotedOrders(token)
+        authCall.enqueue(object: Callback<List<OrderHeader>>{
+            override fun onFailure(call: Call<List<OrderHeader>>?, t: Throwable?) {
+                callback.onNetworkFailure()
+            }
+
+            override fun onResponse(call: Call<List<OrderHeader>>?, response: Response<List<OrderHeader>>?) {
+                when(response!!.code()){
+                    200 -> {
+                        callback.onSuccess(response!!.body()!!)
+                    }
+                    401 -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onSessionExpired(customMessage.message)
+                    }
+                    else -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onCustomMessage(customMessage.message)
+                    }
+                }
+            }
+        })
+    }
+
+    fun getAllOrders(token: String, callback: IMakitaResponseCallback<List<OrderHeader>>){
+        val authCall = MakitaAPI.instance.service!!.getAllOrders(token)
+        authCall.enqueue(object: Callback<List<OrderHeader>>{
+            override fun onFailure(call: Call<List<OrderHeader>>?, t: Throwable?) {
+                callback.onNetworkFailure()
+            }
+
+            override fun onResponse(call: Call<List<OrderHeader>>?, response: Response<List<OrderHeader>>?) {
+                when(response!!.code()){
+                    200 -> {
+                        callback.onSuccess(response!!.body()!!)
+                    }
+                    401 -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onSessionExpired(customMessage.message)
+                    }
+                    else -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onCustomMessage(customMessage.message)
+                    }
+                }
+            }
+        })
+    }
+    fun answerOrder(token: String, orderID: Int, body: OrderQuoteAnswer, callback: IMakitaResponseCallback<OrderQuoteAnswerResponse>){
+        val authCall = MakitaAPI.instance.service!!.answerOrder(token, orderID, body)
+        authCall.enqueue(object: Callback<OrderQuoteAnswerResponse>{
+            override fun onFailure(call: Call<OrderQuoteAnswerResponse>?, t: Throwable?) {
+                callback.onNetworkFailure()
+            }
+
+            override fun onResponse(call: Call<OrderQuoteAnswerResponse>?, response: Response<OrderQuoteAnswerResponse>?) {
+                when(response!!.code()){
+                    200 -> {
+                        callback.onSuccess(response!!.body()!!)
+                    }
+                    401 -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onSessionExpired(customMessage.message)
+                    }
+                    else -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onCustomMessage(customMessage.message)
+                    }
+                }
+            }
+        })
+    }
 
     companion object {
         val instance: MakitaRemoteDataSource by lazy { MakitaRemoteDataSource() }

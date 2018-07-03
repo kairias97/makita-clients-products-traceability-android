@@ -20,7 +20,11 @@ const val URL_UPDATE_PASSWORD = "authentication/password/update/"
 const val URL_RESET_PASSWORD = "authentication/passwordReset/request/"
 const val URL_RESET_PASSWORD_VERIFY_CODE = "authentication/passwordReset/codeVerification"
 const val URL_RESET_PASSWORD_COMPLETION = "authentication/passwordReset/submission/"
+const val URL_ORDERS_QUOTED_GET = "clients/repairOrders/quoted/"
+const val URL_ORDERS_GET = "clients/repairOrders/"
+const val URL_ORDERS_ANSWER = "clients/repairOrders/{orderID}/answer/"
 
 
 const val TYPE_ID_NUMERO_CLIENTE = 1
 const val TYPE_ID_CEDULA = 2
+const val QUOTED_ORDER_ID = "044"

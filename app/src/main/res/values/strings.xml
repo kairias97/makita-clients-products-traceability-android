@@ -105,4 +105,9 @@
     <string name="label_forgot_password_completion">Por favor, ingrese su nueva contraseña:</string>
     <string name="button_end">Finalizar</string>
     <string name="progress_dialog_competion_forgot_password">Guardando nueva contraseña...</string>
+    <string name="progress_dialog_workshop_fragment">Cargando órdenes de reparación...</string>
+    <string name="label_no_orders">Aún no hay órdenes registradas.</string>
+    <string name="button_show_all_orders">Mostrar historial completo de órdenes</string>
+    <string name="check_show_quoted_orders">Mostrar órdenes en cotización</string>
+    <string name="button_show_quoted_orders">Mostrar órdenes en estado de cotización</string>
 </resources>
