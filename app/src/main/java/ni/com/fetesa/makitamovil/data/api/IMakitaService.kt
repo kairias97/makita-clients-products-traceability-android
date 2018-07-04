@@ -49,5 +49,7 @@ interface IMakitaService {
     fun getAllOrders(@Header("Authorization") token: String): Call<List<OrderHeader>>
     @POST(URL_ORDERS_ANSWER)
     fun answerOrder(@Header("Authorization") token: String, @Path("orderID") orderID: Int, @Body body: OrderQuoteAnswer): Call<OrderQuoteAnswerResponse>
+    @GET(URL_RECOMMENDED_PRODUCTS_GET)
+    fun getRecommendedProducts(@Header("Authorization") token: String): Call<List<RecommendedProduct>>
 
 }

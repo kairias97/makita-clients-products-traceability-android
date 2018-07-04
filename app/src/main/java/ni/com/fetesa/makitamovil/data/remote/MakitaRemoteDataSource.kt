@@ -543,6 +543,32 @@ class MakitaRemoteDataSource {
             }
         })
     }
+    fun getRecommendedProducts(token: String, callback: IMakitaResponseCallback<List<RecommendedProduct>>){
+        val authCall = MakitaAPI.instance.service!!.getRecommendedProducts(token)
+        authCall.enqueue(object: Callback<List<RecommendedProduct>>{
+            override fun onFailure(call: Call<List<RecommendedProduct>>?, t: Throwable?) {
+                callback.onNetworkFailure()
+            }
+
+            override fun onResponse(call: Call<List<RecommendedProduct>>?, response: Response<List<RecommendedProduct>>?) {
+                when(response!!.code()){
+                    200 -> {
+                        callback.onSuccess(response!!.body()!!)
+                    }
+                    401 -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onSessionExpired(customMessage.message)
+                    }
+                    else -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onCustomMessage(customMessage.message)
+                    }
+                }
+            }
+        })
+    }
 
     companion object {
         val instance: MakitaRemoteDataSource by lazy { MakitaRemoteDataSource() }

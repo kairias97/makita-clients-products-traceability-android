@@ -86,8 +86,11 @@
         <activity
             android:name=".ui.activities.OrderDetailActivity"
             android:parentActivityName=".ui.activities.OrderHeaderActivity" />
-        <activity android:name=".ui.activities.OrderAnswerReasonActivity"
-            android:parentActivityName=".ui.activities.OrderDetailActivity"></activity>
+        <activity
+            android:name=".ui.activities.OrderAnswerReasonActivity"
+            android:parentActivityName=".ui.activities.OrderDetailActivity" />
+        <activity android:name=".ui.activities.RecommendedProductsActivity"
+            android:parentActivityName=".ui.activities.MainActivity"></activity>
     </application>
 
 </manifest>
