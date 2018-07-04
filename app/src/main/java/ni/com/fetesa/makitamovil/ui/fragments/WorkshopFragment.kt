@@ -139,6 +139,7 @@ class WorkshopFragment : Fragment(), IWorkshopFragmentView, WorkshopAdapter.OnOr
     override fun navigateToOrderHeader(order: OrderHeader) {
         val intent = Intent(activity, OrderHeaderActivity::class.java)
         intent.putExtra("order",order)
+        intent.putParcelableArrayListExtra("details", ArrayList(order.repairOrderDetails))
         startActivity(intent)
     }
 

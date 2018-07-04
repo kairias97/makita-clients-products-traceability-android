@@ -17,28 +17,29 @@ import retrofit2.Response
 class MakitaRemoteDataSource {
     private constructor()
 
-    fun validateMakitaCredentials(data: LoginRequest, callback: IMakitaValidateCredentialsCallBack){
+    fun validateMakitaCredentials(data: LoginRequest, callback: IMakitaResponseCallback<LoginResponse>){
         val authCall = MakitaAPI.instance.service!!.validateMakitaCredentials(data)
         authCall.enqueue(object: Callback<LoginResponse>{
-            override fun onResponse(call: Call<LoginResponse>?, response: Response<LoginResponse>?) {
-                when(response!!.code()){
-                    200 -> callback.onSuccess(response.body()!!)
-                    401 -> callback.onUnauthorized(response.body()!!)
-
-                    else -> {
-                        if(BuildConfig.BUILD_TYPE == "debug") {
-                            Log.e("MakitaLoginError " + response.code().toString(), response.raw().body().toString())
-                        }
-                        callback.onFailure()
-                    }
-                }
+            override fun onFailure(call: Call<LoginResponse>?, t: Throwable?) {
+                callback.onNetworkFailure()
             }
 
-            override fun onFailure(call: Call<LoginResponse>?, t: Throwable?) {
-                if(BuildConfig.BUILD_TYPE == "debug") {
-                    Log.e("MakitaLoginError ", t.toString())
+            override fun onResponse(call: Call<LoginResponse>?, response: Response<LoginResponse>?) {
+                when(response!!.code()){
+                    200 -> {
+                        callback.onSuccess(response!!.body()!!)
+                    }
+                    401 -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onSessionExpired(customMessage.message)
+                    }
+                    else -> {
+                        var customMessage = GsonParser.parseJson(response!!.errorBody()!!.string(),
+                                CustomMessage::class.java)
+                        callback.onCustomMessage(customMessage.message)
+                    }
                 }
-                callback.onFailure()
             }
         })
     }

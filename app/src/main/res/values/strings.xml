@@ -110,4 +110,14 @@
     <string name="button_show_all_orders">Mostrar historial completo de órdenes</string>
     <string name="check_show_quoted_orders">Mostrar órdenes en cotización</string>
     <string name="button_show_quoted_orders">Mostrar órdenes en estado de cotización</string>
+    <string name="button_show_order_details">Ver detalles de cotización</string>
+    <string name="button_accept_quote">Aceptar</string>
+    <string name="button_reject_quote">Rechazar</string>
+    <string name="message_quoted_details">Después de tres meses no nos hacemos responsables por herramientas abandonadas, (reparadas o no reparadas)</string>
+    <string name="progress_dialog_order_details_accepting">Aceptando cotización...</string>
+    <string name="message_accepting_quote">Aceptar cotización</string>
+    <string name="message_accepting_quote_label">¿Está completamente seguro que desea aceptar esta cotización?</string>
+    <string name="label_reason_rejection">Por favor, indique la razón por la que decide rechazar esta cotización:</string>
+    <string name="input_reason">Razón</string>
+    <string name="progress_dialog_rejecting_quote">Rechazando cotización...</string>
 </resources>

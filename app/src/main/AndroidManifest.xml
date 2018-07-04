@@ -80,8 +80,14 @@
         <activity
             android:name=".ui.activities.CompletionForgotPasswordActivity"
             android:parentActivityName=".ui.activities.ForgotPasswordActivity" />
-        <activity android:name=".ui.activities.OrderHeaderActivity"
-            android:parentActivityName=".ui.activities.MainActivity"></activity>
+        <activity
+            android:name=".ui.activities.OrderHeaderActivity"
+            android:parentActivityName=".ui.activities.MainActivity" />
+        <activity
+            android:name=".ui.activities.OrderDetailActivity"
+            android:parentActivityName=".ui.activities.OrderHeaderActivity" />
+        <activity android:name=".ui.activities.OrderAnswerReasonActivity"
+            android:parentActivityName=".ui.activities.OrderDetailActivity"></activity>
     </application>
 
 </manifest>
