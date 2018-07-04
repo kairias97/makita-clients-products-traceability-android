@@ -12,4 +12,5 @@ interface IProductsFragmentView {
     fun showError()
     fun setProductList(data: MutableList<Product>)
     fun navigateToLogin()
+    fun navigateToRecommendedProducts()
 }

@@ -138,6 +138,10 @@ class ProductDetailActivity : BaseActivity(), IProductDetailView {
         finish()
     }
 
+    override fun onBackPressed() {
+        returnTop()
+    }
+
     private fun lockUnlockFields(value: Boolean){
         mTxtDescription.isEnabled = false
         mTxtSerial.isEnabled = value

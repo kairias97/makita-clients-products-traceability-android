@@ -23,6 +23,7 @@ const val URL_RESET_PASSWORD_COMPLETION = "authentication/passwordReset/submissi
 const val URL_ORDERS_QUOTED_GET = "clients/repairOrders/quoted/"
 const val URL_ORDERS_GET = "clients/repairOrders/"
 const val URL_ORDERS_ANSWER = "clients/repairOrders/{orderID}/answer/"
+const val URL_RECOMMENDED_PRODUCTS_GET = "products/recommendations/"
 
 
 const val TYPE_ID_NUMERO_CLIENTE = 1

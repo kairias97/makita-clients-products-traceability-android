@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 
 import ni.com.fetesa.makitamovil.R
@@ -21,6 +22,7 @@ import ni.com.fetesa.makitamovil.presenter.IProductsFragmentPresenter
 import ni.com.fetesa.makitamovil.presenter.implementations.ProductsFragmentPresenterImpl
 import ni.com.fetesa.makitamovil.ui.activities.LoginActivity
 import ni.com.fetesa.makitamovil.ui.activities.ProductDetailActivity
+import ni.com.fetesa.makitamovil.ui.activities.RecommendedProductsActivity
 import ni.com.fetesa.makitamovil.ui.adapters.ProductAdapter
 import ni.com.fetesa.makitamovil.ui.fragmentViews.IProductsFragmentView
 
@@ -40,6 +42,7 @@ class ProductsFragment : Fragment(), IProductsFragmentView, ProductAdapter.OnPro
     private lateinit var mAddButton: FloatingActionButton
     private lateinit var mTextView: TextView
     private lateinit var mRecyclerView: RecyclerView
+    private lateinit var mButtonShowRecommendedProducts: Button
 
     private lateinit var mProductAdapter: ProductAdapter
     private lateinit var mProductPresenter: IProductsFragmentPresenter
@@ -54,6 +57,7 @@ class ProductsFragment : Fragment(), IProductsFragmentView, ProductAdapter.OnPro
         val view = inflater!!.inflate(R.layout.fragment_products, container, false)
         mAddButton = view.findViewById(R.id.fab_add_products)
         mTextView = view.findViewById(R.id.textView_label_no_products)
+        mButtonShowRecommendedProducts = view.findViewById(R.id.button_show_recommended)
 
         mRecyclerView = view.findViewById(R.id.recycler_products)
         mProductAdapter = ProductAdapter(ArrayList<Product>(),this)
@@ -69,6 +73,10 @@ class ProductsFragment : Fragment(), IProductsFragmentView, ProductAdapter.OnPro
                 activity.getSharedPreferences(SharedPrefManager.PreferenceFiles.UserSharedPref.toString(),
                         Context.MODE_PRIVATE)
         ))
+
+        mButtonShowRecommendedProducts.setOnClickListener {
+            this.navigateToRecommendedProducts()
+        }
 
         activity.title = "Productos"
 
@@ -133,6 +141,11 @@ class ProductsFragment : Fragment(), IProductsFragmentView, ProductAdapter.OnPro
     override fun navigateToLogin() {
         val intent = Intent(activity, LoginActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+    }
+
+    override fun navigateToRecommendedProducts() {
+        val intent = Intent(activity, RecommendedProductsActivity::class.java)
         startActivity(intent)
     }
 

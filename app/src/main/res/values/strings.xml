@@ -120,4 +120,7 @@
     <string name="label_reason_rejection">Por favor, indique la razón por la que decide rechazar esta cotización:</string>
     <string name="input_reason">Razón</string>
     <string name="progress_dialog_rejecting_quote">Rechazando cotización...</string>
+    <string name="button_show_recommended_products">Mostrar productos recomendados</string>
+    <string name="label_no_recommended_products">En este momento no existen productos recomendados para usted, por favor regrese más tarde.</string>
+    <string name="progress_dialog_recommended_products">Cargando productos recomendados...</string>
 </resources>
