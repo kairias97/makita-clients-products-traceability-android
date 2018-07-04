@@ -43,5 +43,11 @@ interface IMakitaService {
     fun resetPasswordVerifyCode(@Body body: PasswordResetVerification): Call<PasswordResetVerificationResponse>
     @POST(URL_RESET_PASSWORD_COMPLETION)
     fun resetPasswordCompletion(@Body body: PasswordResetCompletion): Call<PasswordResetCompletionResponse>
+    @GET(URL_ORDERS_QUOTED_GET)
+    fun getQuotedOrders(@Header("Authorization") token: String): Call<List<OrderHeader>>
+    @GET(URL_ORDERS_GET)
+    fun getAllOrders(@Header("Authorization") token: String): Call<List<OrderHeader>>
+    @POST(URL_ORDERS_ANSWER)
+    fun answerOrder(@Header("Authorization") token: String, @Path("orderID") orderID: Int, @Body body: OrderQuoteAnswer): Call<OrderQuoteAnswerResponse>
 
 }

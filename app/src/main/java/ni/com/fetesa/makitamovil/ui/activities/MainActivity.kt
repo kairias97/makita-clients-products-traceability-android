@@ -20,6 +20,7 @@ import ni.com.fetesa.makitamovil.services.RegistrationIntentService
 import ni.com.fetesa.makitamovil.ui.fragments.InvoicesFragment
 import ni.com.fetesa.makitamovil.ui.fragments.ProductsFragment
 import ni.com.fetesa.makitamovil.ui.fragments.ProfileFragment
+import ni.com.fetesa.makitamovil.ui.fragments.WorkshopFragment
 import ni.com.fetesa.makitamovil.ui.views.IMainView
 import ni.com.fetesa.makitamovil.utils.toast
 
@@ -139,7 +140,23 @@ class MainActivity : BaseActivity(), IMainView {
                 })
             }
             R.id.navigation_workshop_orders -> {
-                //message.setText(R.string.title_notifications)
+                fragment = WorkshopFragment.newInstance(object: WorkshopFragment.OnFragmentInteractionListener{
+                    override fun onShowLoadingOrdersProgress() {
+                        activity.showProgressDialog(getString(R.string.progress_dialog_workshop_fragment))
+                    }
+
+                    override fun onHideLoadingOrdersProgress() {
+                        activity.hideProgressDialog()
+                    }
+
+                    override fun onShowCustomMessage(msg: String) {
+                        activity.toast(msg)
+                    }
+
+                    override fun onShowError() {
+                        activity.toast(R.string.generic_500_error)
+                    }
+                })
             }
             R.id.navigation_profile -> {
                 fragment = ProfileFragment.newInstance(object: ProfileFragment.ProfileFragmentListener{

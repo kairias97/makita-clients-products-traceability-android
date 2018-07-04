@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ni.com.fetesa.makitamovil.ui.activities.OrderDetailActivity">
+
+    <TextView
+        android:id="@+id/textView_message_quote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/message_quoted_details"
+        app:layout_constraintBottom_toTopOf="@id/recycler_details"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_details"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_message_quote"
+        app:layout_constraintBottom_toTopOf="@id/button_accept">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/button_accept"
+        style="@style/DefaultButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_affirmative_bg"
+        android:drawableLeft="@drawable/baseline_done_24"
+        android:text="@string/button_accept_quote"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/button_reject"
+        app:layout_constraintTop_toBottomOf="@id/recycler_details"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <Button
+        android:id="@+id/button_reject"
+        style="@style/DefaultButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_normal_bg"
+        android:text="@string/button_reject_quote"
+        android:drawableLeft="@drawable/baseline_clear_24"
+        app:layout_constraintLeft_toRightOf="@id/button_accept"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recycler_details"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

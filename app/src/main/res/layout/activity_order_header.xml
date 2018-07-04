@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ni.com.fetesa.makitamovil.ui.activities.OrderHeaderActivity">
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/button_show_details">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/textView_title_orderID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/textView_label_orderID"
+                android:text="Número de orden:"
+                android:textColor="@android:color/black"/>
+            <TextView
+                android:id="@+id/textView_label_orderID"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/textView_title_orderID"
+                android:text="44444"/>
+            <TextView
+                android:id="@+id/textView_title_distributionCenter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textView_title_orderID"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/textView_label_distributionCenter"
+                android:text="Centro de distribución:"
+                android:textColor="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/textView_label_distributionCenter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/textView_title_distributionCenter"
+                app:layout_constraintTop_toBottomOf="@id/textView_label_orderID"
+                android:text="FETESA MANAGUA"/>
+            <TextView
+                android:id="@+id/textView_title_clientNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textView_title_distributionCenter"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/textView_label_clientNumber"
+                android:text="Número de cliente:"
+                android:textColor="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/textView_label_clientNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/textView_title_clientNumber"
+                app:layout_constraintTop_toBottomOf="@id/textView_label_distributionCenter"
+                android:text="9999999999999"/>
+
+            <TextView
+                android:id="@+id/textView_title_clientName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textView_title_clientNumber"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/textView_label_clientName"
+                android:text="Nombre de cliente:"
+                android:textColor="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/textView_label_clientName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/textView_title_clientName"
+                app:layout_constraintTop_toBottomOf="@id/textView_label_clientNumber"
+                android:text="Dustin Espinoza"/>
+
+            <TextView
+                android:id="@+id/textView_title_equipmentCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textView_title_clientName"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/textView_label_equipmentCode"
+                android:text="Código del equipo:"
+                android:textColor="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/textView_label_equipmentCode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/textView_title_equipmentCode"
+                app:layout_constraintTop_toBottomOf="@id/textView_label_clientName"
+                android:text="HM11112JJK"/>
+
+            <TextView
+                android:id="@+id/textView_title_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textView_title_equipmentCode"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/textView_label_service"
+                android:text="Servicio:"
+                android:textColor="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/textView_label_service"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/textView_title_service"
+                app:layout_constraintTop_toBottomOf="@id/textView_label_equipmentCode"
+                android:text="Reparación"/>
+
+            <TextView
+                android:id="@+id/textView_title_equipmentDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textView_title_service"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/textView_label_equipmentDescription"
+                android:text="Descripción del equipo:"
+                android:textColor="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/textView_label_equipmentDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/textView_title_equipmentDescription"
+                app:layout_constraintTop_toBottomOf="@id/textView_label_service"
+                android:text="ROTOMARTILLO"/>
+
+            <TextView
+                android:id="@+id/textView_title_warrantyDocument"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textView_title_equipmentDescription"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/textView_label_warrantyDocument"
+                android:text="Documento de garantía:"
+                android:textColor="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/textView_label_warrantyDocument"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/textView_title_warrantyDocument"
+                app:layout_constraintTop_toBottomOf="@id/textView_label_equipmentDescription"
+                android:text="JI2434JK"/>
+
+            <TextView
+                android:id="@+id/textView_title_equipmentSerialNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textView_title_warrantyDocument"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/textView_label_equipmentSerialNumber"
+                android:text="Número serial:"
+                android:textColor="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/textView_label_equipmentSerialNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/textView_title_equipmentSerialNumber"
+                app:layout_constraintTop_toBottomOf="@id/textView_label_warrantyDocument"
+                android:text="36243"/>
+
+            <TextView
+                android:id="@+id/textView_title_receptionObservation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textView_title_equipmentSerialNumber"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/textView_label_receptionObservation"
+                android:text="Observación de recepción:"
+
+
+                android:textColor="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/textView_label_receptionObservation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/textView_title_receptionObservation"
+                app:layout_constraintTop_toBottomOf="@id/textView_label_equipmentSerialNumber"
+                android:text="Mantenimiento"/>
+
+            <TextView
+                android:id="@+id/textView_title_deliveryObservation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textView_title_receptionObservation"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/textView_label_deliveryObservation"
+                android:text="Observación de envío:"
+                android:textColor="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/textView_label_deliveryObservation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/textView_title_deliveryObservation"
+                app:layout_constraintTop_toBottomOf="@id/textView_label_receptionObservation"
+                android:text="Ninguna"/>
+
+            <TextView
+                android:id="@+id/textView_title_phoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textView_title_deliveryObservation"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/textView_label_phoneNumber"
+                android:text="Número de teléfono proporcionado:"
+                android:textColor="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/textView_label_phoneNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/textView_title_phoneNumber"
+                app:layout_constraintTop_toBottomOf="@id/textView_label_deliveryObservation"
+                android:text="88104132"/>
+
+            <TextView
+                android:id="@+id/textView_title_receivedAccessories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textView_title_phoneNumber"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/textView_label_receivedAccessories"
+                android:text="Accesorios Recibidos:"
+                android:textColor="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/textView_label_receivedAccessories"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/textView_title_receivedAccessories"
+                app:layout_constraintTop_toBottomOf="@id/textView_label_phoneNumber"
+                android:text="Cargador"/>
+
+            <TextView
+                android:id="@+id/textView_title_createdDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textView_title_receivedAccessories"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/textView_label_createdDate"
+                android:text="Fecha de creación:"
+                android:textColor="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/textView_label_createdDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/textView_title_createdDate"
+                app:layout_constraintTop_toBottomOf="@id/textView_label_receivedAccessories"
+                android:text="02/07/18"/>
+
+            <TextView
+                android:id="@+id/textView_title_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textView_title_createdDate"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/textView_label_description"
+                android:text="Descripción:"
+                android:textColor="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/textView_label_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/textView_title_description"
+                app:layout_constraintTop_toBottomOf="@id/textView_label_createdDate"
+                android:text="MARTILLO DEMOLEDOR"/>
+
+            <TextView
+                android:id="@+id/textView_title_orderStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textView_title_description"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/textView_label_orderStatus"
+                android:text="Estado de la orden:"
+                android:textColor="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/textView_label_orderStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/textView_title_orderStatus"
+                app:layout_constraintTop_toBottomOf="@id/textView_label_description"
+                android:text="RECIBIDO"/>
+
+            <TextView
+                android:id="@+id/textView_title_orderStatusDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textView_title_orderStatus"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/textView_label_orderStatusDescription"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="Descripción del estado de la orden:"
+                android:textColor="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/textView_label_orderStatusDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/textView_title_orderStatusDescription"
+                app:layout_constraintTop_toBottomOf="@id/textView_label_orderStatus"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="Herramienta recibida en taller"/>
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+    <Button
+        android:id="@+id/button_show_details"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:text="@string/button_show_order_details"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scrollView" />
+
+</android.support.constraint.ConstraintLayout>

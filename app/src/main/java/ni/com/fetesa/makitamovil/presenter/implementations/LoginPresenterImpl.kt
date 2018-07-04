@@ -1,6 +1,7 @@
 package ni.com.fetesa.makitamovil.presenter.implementations
 
 import ni.com.fetesa.makitamovil.data.local.SharedPrefManager
+import ni.com.fetesa.makitamovil.data.remote.Callbacks.IMakitaResponseCallback
 import ni.com.fetesa.makitamovil.data.remote.Callbacks.IMakitaValidateCredentialsCallBack
 import ni.com.fetesa.makitamovil.data.remote.MakitaRemoteDataSource
 import ni.com.fetesa.makitamovil.model.LoginRequest
@@ -25,9 +26,9 @@ class LoginPresenterImpl: ILoginPresenter {
 
     override fun validateCredentials(username: String, password: String) {
         mLoginView.showValidatingCredentials()
-        mMakitaRemoteDataSource.validateMakitaCredentials(LoginRequest(username,password),object: IMakitaValidateCredentialsCallBack{
+        mMakitaRemoteDataSource.validateMakitaCredentials(LoginRequest(username, password), object : IMakitaResponseCallback<LoginResponse> {
             override fun onSuccess(response: LoginResponse) {
-                if(response.token != ""){
+                if (response.token != "") {
                     val authToken = response.token
                     mSharedPrefManager.saveString(SharedPrefManager.PreferenceKeys.AUTH_TOKEN,
                             authToken)
@@ -42,14 +43,19 @@ class LoginPresenterImpl: ILoginPresenter {
                 }
             }
 
-            override fun onUnauthorized(response: LoginResponse) {
-                mLoginView.hideValidatingCredentials()
-                mLoginView.showCustomError(response.message)
-            }
-
-            override fun onFailure() {
+            override fun onNetworkFailure() {
                 mLoginView.hideValidatingCredentials()
                 mLoginView.showError()
+            }
+
+            override fun onCustomMessage(message: String) {
+                mLoginView.hideValidatingCredentials()
+                mLoginView.showCustomError(message)
+            }
+
+            override fun onSessionExpired(message: String) {
+                mLoginView.hideValidatingCredentials()
+                mLoginView.showCustomError(message)
             }
         })
     }
