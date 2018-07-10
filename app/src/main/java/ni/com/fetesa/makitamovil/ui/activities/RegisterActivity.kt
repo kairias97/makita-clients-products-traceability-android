@@ -21,6 +21,7 @@ class RegisterActivity : BaseActivity(), IRegisterView {
     private lateinit var radioBtnCedula: RadioButton
     private lateinit var radioBtnNumeroCliente: RadioButton
     private lateinit var btnVerificar: Button
+    private lateinit var mBtnCode: Button
     private var typeID: Int = 0
 
     private lateinit var mRegisterPResenter: IRegisterPresenter
@@ -38,23 +39,47 @@ class RegisterActivity : BaseActivity(), IRegisterView {
         radioBtnCedula = findViewById(R.id.radio_btn_cedula)
         radioBtnNumeroCliente = findViewById(R.id.radio_btn_idCliente)
         btnVerificar = findViewById(R.id.button_verify_identification_card)
+        mBtnCode = findViewById(R.id.button_have_code)
 
         mRegisterPResenter = RegisterPresenterImpl(this, MakitaRemoteDataSource.instance)
 
         btnVerificar.setOnClickListener {
-            val idCard = txtIdentification.text.toString()
-            if(idCard != ""){
-                if(radioBtnCedula.isChecked){
-                    typeID = 2
-                }
-                else if(radioBtnNumeroCliente.isChecked){
-                    typeID = 1
-                }
-                mRegisterPResenter.register(typeID, idCard)
+            beginRegister()
+        }
+
+        mBtnCode.setOnClickListener {
+            sendRegisterToConfirmationCode()
+        }
+    }
+
+    private fun beginRegister(){
+        val idCard = txtIdentification.text.toString()
+        if(idCard != ""){
+            if(radioBtnCedula.isChecked){
+                typeID = 2
             }
-            else{
-                showEmptyFieldsError()
+            else if(radioBtnNumeroCliente.isChecked){
+                typeID = 1
             }
+            mRegisterPResenter.register(typeID, idCard)
+        }
+        else{
+            showEmptyFieldsError()
+        }
+    }
+    private fun sendRegisterToConfirmationCode(){
+        val idCard = txtIdentification.text.toString()
+        if(idCard != ""){
+            if(radioBtnCedula.isChecked){
+                typeID = 2
+            }
+            else if(radioBtnNumeroCliente.isChecked){
+                typeID = 1
+            }
+            navigateToValidateRegister()
+        }
+        else{
+            showEmptyFieldsError()
         }
     }
 

@@ -123,4 +123,5 @@
     <string name="button_show_recommended_products">Mostrar productos recomendados</string>
     <string name="label_no_recommended_products">En este momento no existen productos recomendados para usted, por favor regrese más tarde.</string>
     <string name="progress_dialog_recommended_products">Cargando productos recomendados...</string>
+    <string name="button_have_code">Ya tengo un código</string>
 </resources>
