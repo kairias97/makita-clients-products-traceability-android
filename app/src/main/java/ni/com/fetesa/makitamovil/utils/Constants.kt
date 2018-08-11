@@ -4,7 +4,7 @@ package ni.com.fetesa.makitamovil.utils
  * Created by dusti on 08/05/2018.
  */
 
-const val MAKITA_MAIN_URL = "https://186.1.15.183/makita/api/v1"
+const val MAKITA_MAIN_URL = "https://centralderiesgo.net/makita/api/v1/"
 //const val MAKITA_MAIN_URL = "http://186.1.15.181/Makita/api/v1/"
 const val URL_LOGIN = "authentication/login/"
 const val URL_REGISTRATION = "registrations/"

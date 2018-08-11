@@ -1,31 +1,27 @@
 {
   "project_info": {
-    "project_number": "402968118738",
-    "firebase_url": "https://makita-fetesa.firebaseio.com",
-    "project_id": "makita-fetesa",
-    "storage_bucket": "makita-fetesa.appspot.com"
+    "project_number": "438824972469",
+    "firebase_url": "https://makita-movil-nicaragua.firebaseio.com",
+    "project_id": "makita-movil-nicaragua",
+    "storage_bucket": "makita-movil-nicaragua.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:402968118738:android:6a1e9facee2cbc10",
+        "mobilesdk_app_id": "1:438824972469:android:6a1e9facee2cbc10",
         "android_client_info": {
           "package_name": "ni.com.fetesa.makitamovil"
         }
       },
       "oauth_client": [
         {
-          "client_id": "402968118738-nb75jdsjleomnatspqgerq8r27ruql5d.apps.googleusercontent.com",
-          "client_type": 3
-        },
-        {
-          "client_id": "402968118738-nb75jdsjleomnatspqgerq8r27ruql5d.apps.googleusercontent.com",
+          "client_id": "438824972469-70d0ukfflinm59ur5hqaaua3bdatfupt.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDz2d5MGpWAcdWuYzmNE0vD7l8zoayDxuw"
+          "current_key": "AIzaSyDVu8mckRU4wz5bxCzXkMQ_ALFlxPJx_LA"
         }
       ],
       "services": {

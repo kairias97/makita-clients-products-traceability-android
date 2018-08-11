@@ -5,7 +5,11 @@ import android.content.Intent
 import android.opengl.Visibility
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
+import android.support.design.widget.TextInputLayout
 import android.support.v4.app.Fragment
+import android.text.Editable
+import android.text.TextUtils
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,6 +57,15 @@ class ProfileFragment : Fragment(), IProfileFragmentView, DatePickerFragment.Dat
     private lateinit var mEditFab: FloatingActionButton
     private lateinit var mSaveFab: FloatingActionButton
 
+    private lateinit var mLayoutFirstName: TextInputLayout
+    private lateinit var mLayoutMiddleName: TextInputLayout
+    private lateinit var mLayoutLastName: TextInputLayout
+    private lateinit var mLayoutSecondLastName: TextInputLayout
+    private lateinit var mLayoutBirthDate: TextInputLayout
+    private lateinit var mLayoutFirstEmail: TextInputLayout
+    private lateinit var mLayoutSecondEmail: TextInputLayout
+    private lateinit var mLayoutCellPhone: TextInputLayout
+
     private lateinit var mProfileFragmentPresenter: IProfileFragmentPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,6 +92,16 @@ class ProfileFragment : Fragment(), IProfileFragmentView, DatePickerFragment.Dat
         mCheckPointsButton = view.findViewById(R.id.btn_check_points)
         mEditFab = view.findViewById(R.id.fab_edit_profile)
         mSaveFab = view.findViewById(R.id.fab_save_profile)
+
+        mLayoutFirstName = view.findViewById(R.id.text_input_layout_profile_firstName)
+        mLayoutMiddleName = view.findViewById(R.id.text_input_layout_profile_secondName)
+        mLayoutLastName = view.findViewById(R.id.text_input_layout_profile_lastName)
+        mLayoutSecondLastName = view.findViewById(R.id.text_input_layout_profile_secondLastName)
+        mLayoutBirthDate = view.findViewById(R.id.text_input_layout_profile_birth_date)
+        mLayoutFirstEmail = view.findViewById(R.id.edit_text_profile_firstEmail)
+        mLayoutSecondEmail = view.findViewById(R.id.edit_text_profile_secondEmail)
+        mLayoutCellPhone = view.findViewById(R.id.text_input_layout_profile_cellphone)
+
         mCheckPointsButton.setOnClickListener {
             mProfileFragmentPresenter.getMakitaPoints()
         }
@@ -89,27 +112,152 @@ class ProfileFragment : Fragment(), IProfileFragmentView, DatePickerFragment.Dat
             lockUnlockInputs(true)
         }
         mSaveFab.setOnClickListener {
-            val username = mTxtUsername.text.toString()
-            val identificationNumber = mTxtIdentificationNumber.text.toString()
-            val firstName = mTxtFirstName.text.toString()
-            val middleName = mTxtMiddleName.text.toString()
-            val lastName = mTxtLastName.text.toString()
-            val secondLastName = mTxtSecondLastName.text.toString()
-            val birthDate = DateUtil.parseDateStringToFormat(mTxtBirthDate.text.toString(),"dd/mm/yy","yyyy-mm-dd")
-            val isMale = mRadioBtnMale.isChecked
-            val firstEmail = mTxtFirstEmail.text.toString()
-            val secondEmail = mTxtSecondEmail.text.toString()
-            val cellPhone = mTxtCellphone.text.toString()
-            val profile = MakitaProfile(username, MakitaUserSession.instance.makitaProfile.fetesaAlias, MakitaUserSession.instance.makitaProfile.clientFetesaCode,
-                    MakitaUserSession.instance.makitaProfile.documentTypeID, identificationNumber, firstName, middleName, lastName, secondLastName, birthDate, isMale,
-                    firstEmail, secondEmail, cellPhone,"")
-            if(profile != MakitaUserSession.instance.makitaProfile){
-                mProfileFragmentPresenter.updateProfile(profile)
-            }
-            else{
-                savedProfileSuccessful()
+            if(validateText(mTxtFirstName) && validateText(mTxtMiddleName) && validateText(mTxtLastName)
+            && validateText(mTxtSecondLastName) && validateText(mTxtBirthDate) && validateText(mTxtFirstEmail)
+            && validateText(mTxtSecondEmail) && validateText(mTxtCellphone) && validateSex(mRadioBtnMale,mRadioBtnFemale)){
+                val username = mTxtUsername.text.toString()
+                val identificationNumber = mTxtIdentificationNumber.text.toString()
+                val firstName = mTxtFirstName.text.toString()
+                val middleName = mTxtMiddleName.text.toString()
+                val lastName = mTxtLastName.text.toString()
+                val secondLastName = mTxtSecondLastName.text.toString()
+                val birthDate = DateUtil.parseDateStringToFormat(mTxtBirthDate.text.toString(),"dd/mm/yy","yyyy-mm-dd")
+                val isMale = mRadioBtnMale.isChecked
+                val firstEmail = mTxtFirstEmail.text.toString()
+                val secondEmail = mTxtSecondEmail.text.toString()
+                val cellPhone = mTxtCellphone.text.toString()
+                val profile = MakitaProfile(username, MakitaUserSession.instance.makitaProfile.fetesaAlias, MakitaUserSession.instance.makitaProfile.clientFetesaCode,
+                        MakitaUserSession.instance.makitaProfile.documentTypeID, identificationNumber, firstName, middleName, lastName, secondLastName, birthDate, isMale,
+                        firstEmail, secondEmail, cellPhone,"")
+                if(profile != MakitaUserSession.instance.makitaProfile){
+                    mProfileFragmentPresenter.updateProfile(profile)
+                }
+                else{
+                    savedProfileSuccessful()
+                }
             }
         }
+
+        mTxtFirstName.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+                validateText(mTxtFirstName)
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+        })
+
+        mTxtMiddleName.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+                validateText(mTxtMiddleName)
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+        })
+
+        mTxtLastName.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+                validateText(mTxtLastName)
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+        })
+
+        mTxtSecondLastName.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+                validateText(mTxtSecondLastName)
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+        })
+
+        mTxtBirthDate.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+                validateText(mTxtBirthDate)
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+        })
+
+        mTxtFirstEmail.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+                validateText(mTxtFirstEmail)
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+        })
+
+        mTxtSecondEmail.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+                validateText(mTxtSecondEmail)
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+        })
+
+        mTxtCellphone.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+                validateText(mTxtCellphone)
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+        })
+
         mTxtBirthDate.setOnClickListener {
             val datePickerFragment = DatePickerFragment.newInstance(this)
             datePickerFragment.show(fragmentManager.beginTransaction(), "datePicker")
@@ -126,6 +274,103 @@ class ProfileFragment : Fragment(), IProfileFragmentView, DatePickerFragment.Dat
         mProfileFragmentPresenter.getProfile()
         lockUnlockInputs(false)
         return view
+    }
+
+    private fun validateSex(s1: RadioButton, s2: RadioButton): Boolean{
+        if(s1.isChecked || s2.isChecked){
+            return true
+        }
+        else{
+            return false
+        }
+    }
+
+    private fun validateText(s: EditText): Boolean{
+        when(s.id){
+            R.id.edit_text_profile_firstName -> {
+                if(!TextUtils.isEmpty(s.text)){
+                    mLayoutFirstName.error = null
+                    return true
+                }
+                else{
+                    mLayoutFirstName.error = getString(R.string.validate_no_empty_field)
+                    return false
+                }
+            }
+            R.id.edit_text_profile_secondName -> {
+                if(!TextUtils.isEmpty(s.text)){
+                    mLayoutMiddleName.error = null
+                    return true
+                }
+                else{
+                    mLayoutMiddleName.error = getString(R.string.validate_no_empty_field)
+                    return false
+                }
+            }
+            R.id.edit_text_profile_lastName -> {
+                if(!TextUtils.isEmpty(s.text)){
+                    mLayoutLastName.error = null
+                    return true
+                }
+                else{
+                    mLayoutLastName.error = getString(R.string.validate_no_empty_field)
+                    return false
+                }
+            }
+            R.id.edit_text_profile_secondLastName -> {
+                if(!TextUtils.isEmpty(s.text)){
+                    mLayoutSecondLastName.error = null
+                    return true
+                }
+                else{
+                    mLayoutSecondLastName.error = getString(R.string.validate_no_empty_field)
+                    return false
+                }
+            }
+            R.id.edit_text_profile_birthDate -> {
+                if(!TextUtils.isEmpty(s.text)){
+                    mLayoutBirthDate.error = null
+                    return true
+                }
+                else{
+                    mLayoutBirthDate.error = getString(R.string.validate_no_empty_field)
+                    return false
+                }
+            }
+            R.id.edit_text_profile_firstEmail -> {
+                if(!TextUtils.isEmpty(s.text)){
+                    mLayoutFirstEmail.error = null
+                    return true
+                }
+                else{
+                    mLayoutFirstEmail.error = getString(R.string.validate_no_empty_field)
+                    return false
+                }
+            }
+            R.id.edit_text_profile_secondEmail -> {
+                if(!TextUtils.isEmpty(s.text)){
+                    mLayoutSecondEmail.error = null
+                    return true
+                }
+                else{
+                    mLayoutSecondEmail.error = getString(R.string.validate_no_empty_field)
+                    return false
+                }
+            }
+            R.id.edit_text_profile_cellphone -> {
+                if(!TextUtils.isEmpty(s.text)){
+                    mLayoutCellPhone.error = null
+                    return true
+                }
+                else{
+                    mLayoutCellPhone.error = getString(R.string.validate_no_empty_field)
+                    return false
+                }
+            }
+            else -> {
+                return false
+            }
+        }
     }
 
     interface ProfileFragmentListener{
