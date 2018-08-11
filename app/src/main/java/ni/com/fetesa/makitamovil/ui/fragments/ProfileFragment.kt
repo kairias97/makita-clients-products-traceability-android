@@ -65,6 +65,7 @@ class ProfileFragment : Fragment(), IProfileFragmentView, DatePickerFragment.Dat
     private lateinit var mLayoutFirstEmail: TextInputLayout
     private lateinit var mLayoutSecondEmail: TextInputLayout
     private lateinit var mLayoutCellPhone: TextInputLayout
+    private var mFirstTime: Boolean = false
 
     private lateinit var mProfileFragmentPresenter: IProfileFragmentPresenter
 
@@ -98,9 +99,11 @@ class ProfileFragment : Fragment(), IProfileFragmentView, DatePickerFragment.Dat
         mLayoutLastName = view.findViewById(R.id.text_input_layout_profile_lastName)
         mLayoutSecondLastName = view.findViewById(R.id.text_input_layout_profile_secondLastName)
         mLayoutBirthDate = view.findViewById(R.id.text_input_layout_profile_birth_date)
-        mLayoutFirstEmail = view.findViewById(R.id.edit_text_profile_firstEmail)
-        mLayoutSecondEmail = view.findViewById(R.id.edit_text_profile_secondEmail)
+        mLayoutFirstEmail = view.findViewById(R.id.text_input_layout_profile_firstEmail)
+        mLayoutSecondEmail = view.findViewById(R.id.text_input_layout_profile_secondEmail)
         mLayoutCellPhone = view.findViewById(R.id.text_input_layout_profile_cellphone)
+
+        mFirstTime = false
 
         mCheckPointsButton.setOnClickListener {
             mProfileFragmentPresenter.getMakitaPoints()
