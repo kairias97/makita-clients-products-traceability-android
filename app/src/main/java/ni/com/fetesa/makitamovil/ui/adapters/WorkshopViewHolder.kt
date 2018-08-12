@@ -29,7 +29,8 @@ class WorkshopViewHolder:RecyclerView.ViewHolder {
         mTxtOrderID.text = "Órden #${orderHeader.fetesaOrderID.toString()}"
         mTxtOrderStatus.text = "Estado: ${orderHeader.orderStatus.name}"
         mTxtProductDescription.text = orderHeader.equipmentDescription
-        mTxtCreatedDate.text = DateUtil.parseDateStringToFormat(orderHeader.createdDate.substring(0,10),"yyyy-mm-dd","dd/mm/yy")
+        mTxtCreatedDate.text = if(orderHeader.createdDate == null) ""
+            else DateUtil.parseDateStringToFormat(orderHeader.createdDate.substring(0,10),"yyyy-mm-dd","dd/mm/yy")
         mTxtOrderStore.text = orderHeader.distributionCenter
 
         itemView.setOnClickListener {
