@@ -71,6 +71,8 @@ class WorkshopFragment : Fragment(), IWorkshopFragmentView, WorkshopAdapter.OnOr
         ))
 
         mButtonShowAll.setOnClickListener {
+            (mRecyclerView.adapter as? WorkshopAdapter)!!.setOrdersList(ArrayList<OrderHeader>())
+            (mRecyclerView.adapter as? WorkshopAdapter)!!.notifyDataSetChanged()
             if(mWorkshopPresenter.mIsQuoted){
                 mWorkshopPresenter.getAllOrders()
             }

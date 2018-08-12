@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Makita</string>
+    <string name="app_name">Makita Nicaragua</string>
     <string name="input_user_email">Usuario</string>
     <string name="input_user_password">Contraseña</string>
     <string name="button_login">Iniciar sesión</string>
