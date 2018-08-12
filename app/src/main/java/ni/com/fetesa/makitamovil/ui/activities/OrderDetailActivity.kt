@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.TextView
 import ni.com.fetesa.makitamovil.R
 import ni.com.fetesa.makitamovil.data.local.SharedPrefManager
 import ni.com.fetesa.makitamovil.data.remote.MakitaRemoteDataSource
@@ -25,7 +26,7 @@ class OrderDetailActivity : BaseActivity(), OrderDetailAdapter.OnDetailSelectedL
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mButtonAccept: Button
     private lateinit var mButtonReject: Button
-
+    private lateinit var mTotalTextView : TextView
     private lateinit var mOrderDetailAdapter: OrderDetailAdapter
 
     private lateinit var mOrderDetailPresenter: OrderDetailPresenterImpl
@@ -38,7 +39,12 @@ class OrderDetailActivity : BaseActivity(), OrderDetailAdapter.OnDetailSelectedL
             mOrder = intent.getParcelableExtra("order")
             mDetails = intent.getParcelableArrayListExtra("details")
         }
-
+        var total: Double = 0.00
+        for (detail in mDetails) {
+            total += detail.unitPrice * detail.quantity
+        }
+        mTotalTextView = findViewById<TextView>(R.id.text_total_quotation)
+        mTotalTextView.text = "Costo Total: C$ ${total}"
         mRecyclerView = findViewById(R.id.recycler_details)
         mButtonAccept = findViewById(R.id.button_accept)
         mButtonReject = findViewById(R.id.button_reject)

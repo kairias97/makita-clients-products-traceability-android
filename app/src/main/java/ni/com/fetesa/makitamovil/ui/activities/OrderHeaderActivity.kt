@@ -127,7 +127,8 @@ class OrderHeaderActivity : BaseActivity(), IOrderHeaderView {
         else{
             mTextViewReceivedAccesories.text = "Ninguno"
         }
-        mTextViewCreatedDate.text = DateUtil.parseDateStringToFormat(mOrder.createdDate.substring(0,10),"yyyy-mm-dd","dd/mm/yy")
+        mTextViewCreatedDate.text = if (mOrder.createdDate == null) ""
+            else DateUtil.parseDateStringToFormat(mOrder.createdDate!!.substring(0,10),"yyyy-mm-dd","dd/mm/yy")
         mTextViewDescription.text = mOrder.description
         mTextViewOrderStatus.text = mOrder.orderStatus.name
         mTextViewOrderStatusDescription.text = mOrder.orderStatus.description
