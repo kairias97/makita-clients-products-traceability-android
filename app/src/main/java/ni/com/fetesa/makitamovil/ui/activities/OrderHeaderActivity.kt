@@ -133,8 +133,11 @@ class OrderHeaderActivity : BaseActivity(), IOrderHeaderView {
         mTextViewOrderStatus.text = mOrder.orderStatus.name
         mTextViewOrderStatusDescription.text = mOrder.orderStatus.description
 
-        if(mOrder.orderStatus.NAFCode == QUOTED_ORDER_ID){
+        if(mDetails.count() > 0){
             mButtonNavToDetails.visibility = View.VISIBLE
+        }
+        else{
+            mButtonNavToDetails.visibility = View.GONE
         }
     }
 

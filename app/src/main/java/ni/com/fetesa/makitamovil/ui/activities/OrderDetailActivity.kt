@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import ni.com.fetesa.makitamovil.R
@@ -17,6 +18,7 @@ import ni.com.fetesa.makitamovil.model.OrderHeader
 import ni.com.fetesa.makitamovil.presenter.implementations.OrderDetailPresenterImpl
 import ni.com.fetesa.makitamovil.ui.adapters.OrderDetailAdapter
 import ni.com.fetesa.makitamovil.ui.views.IOrderDetailView
+import ni.com.fetesa.makitamovil.utils.QUOTED_ORDER_ID
 import ni.com.fetesa.makitamovil.utils.toast
 
 class OrderDetailActivity : BaseActivity(), OrderDetailAdapter.OnDetailSelectedListener, IOrderDetailView {
@@ -61,6 +63,15 @@ class OrderDetailActivity : BaseActivity(), OrderDetailAdapter.OnDetailSelectedL
                 getSharedPreferences(SharedPrefManager.PreferenceFiles.UserSharedPref.toString(),
                         Context.MODE_PRIVATE)
         ))
+
+        if(mOrder.orderStatus.NAFCode == QUOTED_ORDER_ID){
+            mButtonReject.visibility = View.VISIBLE
+            mButtonAccept.visibility = View.VISIBLE
+        }
+        else{
+            mButtonAccept.visibility = View.GONE
+            mButtonReject.visibility = View.GONE
+        }
 
         mButtonAccept.setOnClickListener {
             this.showConfirmDialog(titleResId = R.string.message_accepting_quote,

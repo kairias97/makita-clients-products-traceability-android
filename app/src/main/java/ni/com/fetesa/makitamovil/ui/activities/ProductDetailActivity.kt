@@ -192,9 +192,16 @@ class ProductDetailActivity : BaseActivity(), IProductDetailView {
     }
 
     override fun showWarranty(warranty: Warranty) {
-        val sdf = SimpleDateFormat("dd/mm/yy")
-        val date1 = DateUtil.parseDateStringToFormat(warranty.endDate,"yyyy-mm-dd","dd/mm/yy")
+        if(warranty.active){
+            val sdf = SimpleDateFormat("dd/mm/yy")
+            val date1 = DateUtil.parseDateStringToFormat(warranty.endDate,"yyyy-mm-dd","dd/mm/yy")
+            this.toast("La garantía de este producto está activa y finaliza el día: $date1", android.widget.Toast.LENGTH_LONG)
+        }
+        else{
+            this.toast("La garantía de este producto ha sido invalidada por: ${warranty.invalidationReason}", android.widget.Toast.LENGTH_LONG)
+        }
 
-        this.toast("La garantía finaliza el día: $date1")
+
+
     }
 }

@@ -12,4 +12,6 @@ data class Warranty(@SerializedName("productWarrantyID") val id: Int,
                     @SerializedName("purchaseDate") val purchaseDate: String,
                     @SerializedName("partNumber") val productPartNumber: String,
                     @SerializedName("fetesaStore") val originStore: String,
-                    @SerializedName("physicalInvoiceNumber") val physicalInvoice: String)
+                    @SerializedName("physicalInvoiceNumber") val physicalInvoice: String,
+                    @SerializedName("active") val active: Boolean,
+                    @SerializedName("invalidationReason") val invalidationReason: String)
